@@ -1,0 +1,188 @@
+<h2 class="text-center my-5 fw-bold">Pregled poslova</h2>
+<h4 class="fw-bold">Izaberite kategoriju</h4>
+<div class="btn-group btn-group-lg mb-5" role="group">
+  <input
+    type="radio"
+    class="btn-check"
+    name="selectedGroup"
+    id="btnradio1"
+    autocomplete="off"
+    value="pending"
+    [(ngModel)]="selectedGroup"
+    (change)="deselectAll()"
+  />
+  <label class="btn btn-outline-primary" for="btnradio1">Zahtevi</label>
+  <input
+    type="radio"
+    class="btn-check"
+    name="selectedGroup"
+    id="btnradio2"
+    autocomplete="off"
+    value="active"
+    [(ngModel)]="selectedGroup"
+    (change)="deselectAll()"
+  />
+  <label class="btn btn-outline-primary" for="btnradio2">Aktivni</label>
+</div>
+<div class="table-responsive d-flex justify-content-start">
+  <h4 *ngIf="selectedJobs.get(selectedGroup)?.length === 0">
+    Trenutno nemate poslova u izabranoj kategoriji
+  </h4>
+  <table
+    class="table table-hover table-bordered align-middle"
+    *ngIf="selectedJobs.get(selectedGroup)?.length !== 0"
+  >
+    <thead>
+      <tr>
+        <th>Klijent</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>Datum početka</th>
+        <th>Datum kraja</th>
+        <th>Tip</th>
+        <th>Adresa</th>
+        <th>Broj prostorija</th>
+        <th>Kvadratura</th>
+        <th>Akcija</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let job of selectedJobs.get(selectedGroup)">
+        <td>
+          {{ job.client?.clientInfo?.firstName }}
+          {{ job.client?.clientInfo?.lastName }}
+        </td>
+        <td>
+          {{ job.client?.email }}
+        </td>
+        <td>
+          {{ job.client?.phone }}
+        </td>
+        <td>
+          {{ job.startDate | date : "yyyy-MM-dd" }}
+        </td>
+        <td>
+          {{ job.endDate | date : "yyyy-MM-dd" }}
+        </td>
+        <td>
+          {{ job.object?.type === "house" ? "Kuća" : "Stan" }}
+        </td>
+        <td>
+          {{ job.object?.address }}
+        </td>
+        <td>
+          {{ job.object?.roomNum }}
+        </td>
+        <td>{{ job.object?.area }} m<sup>2</sup></td>
+        <td>
+          <span class="d-flex justify-content-evenly">
+            <span class="mx-2">
+              <input
+                type="radio"
+                name="btncheck2"
+                class="btn-check"
+                [id]="'btncheck2' + job._id"
+                [checked]="selectedObj === job.object"
+                (click)="onClickSelect(job.object)"
+              />
+              <label class="btn btn-info mx-auto" [for]="'btncheck2' + job._id"
+                ><i class="fas fa-eye"></i
+              ></label>
+            </span>
+
+            <span class="mx-2" *ngIf="paidCondition(job)">
+              <input
+                type="radio"
+                name="btncheck1"
+                class="btn-check"
+                [id]="'btncheck1' + job._id"
+                [checked]="jobToPay === job"
+                (click)="selectToPay(job)"
+              />
+              <label
+                class="btn btn-success mx-auto"
+                [for]="'btncheck1' + job._id"
+                ><i class="fas fa-check"></i
+              ></label>
+            </span>
+
+            <button
+              class="btn btn-danger mx-2"
+              (click)="onClickReject(job)"
+              *ngIf="job.status === 'created'"
+            >
+              <i class="far fa-solid fa-x"></i>
+            </button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="d-lg-flex justify-content-between">
+  <div class="d-flex flex-column action-item">
+    <ul *ngIf="jobToPay" class="list-group my-3">
+      <li class="list-group-item d-flex flex-column">
+        <h2 class="fw-bold my-2">Ponuda za uređivanje</h2>
+      </li>
+      <li class="list-group-item d-flex flex-column">
+        <label for="payOffer" class="form-label fs-4 fw-bold my-auto"
+          >Iznos plaćanja</label
+        >
+        <input
+          type="number"
+          [disabled]="jobToPay.status !== 'created'"
+          [(ngModel)]="jobToPay.payOffer"
+          id="payOffer"
+          name="payOffer"
+          class="form-control fs-4"
+          min="1"
+          placeholder="Unesite ponudu za uređivanje"
+        />
+        <span class="d-flex justify-content-start mt-2">
+          <button
+            class="btn btn-success btn-lg me-auto my-auto"
+            (click)="sendOffer(jobToPay)"
+            *ngIf="jobToPay.status === 'created'"
+          >
+            Pošalji
+          </button>
+        </span>
+      </li>
+    </ul>
+
+    <ul class="list-group my-3" *ngIf="jobToCancel">
+      <li class="list-group-item">
+        <span class="d-flex justify-content-between">
+          <label for="cancellation" class="form-label fw-bold my-auto"
+            >Razlog otkazivanja</label
+          >
+          <button
+            class="btn btn-danger btn-lg mb-2"
+            (click)="sendCancellation(jobToCancel)"
+          >
+            Pošalji
+          </button>
+        </span>
+        <textarea
+          class="form-control"
+          rows="3"
+          id="cancellationReason"
+          [(ngModel)]="cancellationReason"
+          name="cancellationReason"
+          placeholder="Unesite razlog otkazivanja"
+        ></textarea>
+      </li>
+    </ul>
+  </div>
+  <div
+    *ngIf="selectedObj"
+    class="canvas-container d-flex flex-column mx-3 my-3"
+  >
+    <h2 class="fw-bold">Skica objekta</h2>
+    <app-object-canvas
+      [canvasObject]="selectedObj"
+      [hideForm]="true"
+    ></app-object-canvas>
+  </div>
+</div>

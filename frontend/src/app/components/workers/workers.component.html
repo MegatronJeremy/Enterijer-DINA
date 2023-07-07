@@ -1,0 +1,120 @@
+<h2 class="text-center my-5 fw-bold">Pregled radnika</h2>
+<div class="table-responsive d-flex justify-content-start">
+  <h4 *ngIf="workers.length === 0">Trenutno nemate radnika</h4>
+  <table
+    class="table table-hover table-bordered align-middle"
+    *ngIf="workers.length !== 0"
+  >
+    <thead>
+      <tr>
+        <th>Ime</th>
+        <th>Prezime</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>Specijalizacija</th>
+        <th>Akcija</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let worker of workers">
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="worker.firstName"
+            [disabled]="workerToEdit !== worker"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="worker.lastName"
+            [disabled]="workerToEdit !== worker"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="worker.email"
+            [disabled]="workerToEdit !== worker"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="worker.phone"
+            [disabled]="workerToEdit !== worker"
+          />
+        </td>
+        <td>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="worker.specialty"
+            [disabled]="workerToEdit !== worker"
+          />
+        </td>
+        <td>
+          <span class="d-flex justify-content-start">
+            <input
+              type="radio"
+              name="btncheck"
+              class="btn-check"
+              [id]="'btncheck' + worker._id"
+              [checked]="workerToEdit === worker"
+              [disabled]="workerToEdit && workerToEdit !== worker"
+              (click)="selectToEdit(worker)"
+            />
+            <label class="btn btn-primary me-3" [for]="'btncheck' + worker._id">
+              <i class="fas fa-edit"></i>
+            </label>
+            <button
+              class="btn btn-danger mx-auto"
+              (click)="onClickDelete(worker)"
+              [disabled]="workerToEdit && workerToEdit !== worker"
+            >
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<form
+  (submit)="submitVacancyRequest()"
+  class="d-flex justify-content-center my-3"
+  *ngIf="vacancy.vacancies === 0"
+>
+  <div class="d-flex flex-column">
+    <label for="vacancies" class="form-label"
+      >Unesite broj radnih mesta koja želite otvoriti</label
+    >
+    <input
+      type="number"
+      class="form-control"
+      min="1"
+      placeholder="Unesite broj radnih mesta"
+      id="vacancyNum"
+      name="vacancyNum"
+      [(ngModel)]="vacancyNum"
+    />
+  </div>
+  <button type="submit" class="btn btn-primary btn-lg py-3 my-auto ms-5">
+    Potvrdi
+  </button>
+</form>
+
+<div class="d-flex justify-content-center my-3" *ngIf="vacancy.vacancies !== 0">
+  <button
+    class="btn btn-primary mx-3 btn-lg py-3 my-auto"
+    [disabled]="workerToAdd"
+    (click)="addWorker()"
+  >
+    Dodaj radnika?
+  </button>
+</div>

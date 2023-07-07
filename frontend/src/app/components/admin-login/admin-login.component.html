@@ -1,0 +1,28 @@
+<h2 class="text-center page-header">Prijava administratora</h2>
+<form (submit)="onLoginSubmit()">
+  <div class="mb-3" id="usernameField">
+    <label for="username" class="form-label">Korisničko ime</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      [(ngModel)]="username"
+      name="username"
+      placeholder="Unesite korisničko ime"
+    />
+  </div>
+
+  <div class="mb-3" id="passwordField">
+    <label for="password1" class="form-label">Lozinka</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password1"
+      [(ngModel)]="password"
+      name="password1"
+      placeholder="Unesite lozinku"
+    />
+  </div>
+
+  <button type="submit" class="btn btn-primary">Potvrdi</button>
+</form>

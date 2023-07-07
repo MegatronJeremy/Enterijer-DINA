@@ -1,0 +1,212 @@
+<div *ngIf="user" class="d-lg-flex justify-content-evenly">
+  <div class="mx-3">
+    <h2 class="page-header text-center">Podaci o korisniku</h2>
+    <ul class="list-group mb-3">
+      <li class="list-group-item d-flex justify-content-center">
+        <img
+          *ngIf="user.profilePicture"
+          [src]="'http://localhost:4000/' + user.profilePicture"
+          class="user-picture img-thumbnail img-fluid"
+        />
+      </li>
+      <span [hidden]="user.userType !== 'client'">
+        <li class="list-group-item">Ime: {{ user.clientInfo?.firstName }}</li>
+        <li class="list-group-item">
+          Prezime: {{ user.clientInfo?.lastName }}
+        </li>
+      </span>
+      <span [hidden]="user.userType !== 'agency'">
+        <li class="list-group-item">
+          Naziv agencije: {{ user.agencyInfo?.agencyName }}
+        </li>
+        <li class="list-group-item">
+          Adresa: {{ user.agencyInfo?.country }}, {{ user.agencyInfo?.city }},
+          {{ user.agencyInfo?.street }}
+        </li>
+        <li class="list-group-item">
+          Opis: {{ user.agencyInfo?.description }}
+        </li>
+      </span>
+      <li class="list-group-item">Korisničko ime: {{ user.username }}</li>
+      <li class="list-group-item">Email: {{ user.email }}</li>
+      <li class="list-group-item">
+        <div class="text-break">Kontakt telefon: {{ user.phone }}</div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="form-container mx-3">
+    <h2 class="page-header text-center">Ažuriranje podataka</h2>
+    <form (submit)="updateProfile()">
+      <span [hidden]="user.userType !== 'client'">
+        <div class="mb-3">
+          <label for="firstName" class="form-label">Ime:</label>
+          <input
+            type="text"
+            id="firstName"
+            class="form-control"
+            [ngModel]="user.clientInfo?.firstName"
+            (ngModelChange)="
+              user.clientInfo && (user.clientInfo.firstName = $event)
+            "
+            name="firstName"
+            placeholder="Unesite ime"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Prezime:</label>
+          <input
+            type="text"
+            id="lastName"
+            class="form-control"
+            [ngModel]="user.clientInfo?.lastName"
+            (ngModelChange)="
+              user.clientInfo && (user.clientInfo.lastName = $event)
+            "
+            name="lastName"
+            placeholder="Unesite prezime"
+          />
+        </div>
+      </span>
+
+      <span [hidden]="user.userType !== 'agency'">
+        <div class="mb-3">
+          <label for="agencyName" class="form-label">Naziv agencije</label>
+          <input
+            type="text"
+            class="form-control"
+            id="agencyName"
+            [ngModel]="user.agencyInfo?.agencyName"
+            (ngModelChange)="
+              user.agencyInfo && (user.agencyInfo.agencyName = $event)
+            "
+            name="agencyName"
+            placeholder="Unesite naziv agencije"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="agencyCountry" class="form-label">Država</label>
+          <input
+            type="text"
+            class="form-control"
+            id="agencyCountry"
+            [ngModel]="user.agencyInfo?.country"
+            (ngModelChange)="
+              user.agencyInfo && (user.agencyInfo.country = $event)
+            "
+            name="agencyCountry"
+            placeholder="Unesite državu"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="agencyCity" class="form-label">Grad</label>
+          <input
+            type="text"
+            class="form-control"
+            id="agencyCity"
+            [ngModel]="user.agencyInfo?.city"
+            (ngModelChange)="user.agencyInfo && (user.agencyInfo.city = $event)"
+            name="agencyCity"
+            placeholder="Unesite grad"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="agencyStreet" class="form-label">Ulica i broj</label>
+          <input
+            type="text"
+            class="form-control"
+            id="agencyStreet"
+            [ngModel]="user.agencyInfo?.street"
+            (ngModelChange)="
+              user.agencyInfo && (user.agencyInfo.street = $event)
+            "
+            name="agencyStreet"
+            placeholder="Unesite ulicu i broj"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="agencyDescription" class="form-label"
+            >Kratak tekstualni opis o agenciji</label
+          >
+          <textarea
+            class="form-control"
+            id="agencyDescription"
+            rows="3"
+            [ngModel]="user.agencyInfo?.description"
+            (ngModelChange)="
+              user.agencyInfo && (user.agencyInfo.description = $event)
+            "
+            name="description"
+            placeholder="Unesite kratak tekstualni opis o agenciji"
+          ></textarea>
+        </div>
+      </span>
+
+      <div class="mb-3">
+        <label for="newEmail" class="form-label">Email:</label>
+        <input
+          type="email"
+          id="newEmail"
+          class="form-control"
+          [(ngModel)]="user.email"
+          name="newEmail"
+          placeholder="Unesite E-mail adresu"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="phone" class="form-label">Kontakt telefon</label>
+        <input
+          type="text"
+          class="form-control"
+          id="phone"
+          [(ngModel)]="user.phone"
+          name="contactPhone"
+          placeholder="Unesite kontakt telefon"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label
+          for="profilePicture"
+          class="form-label"
+          [hidden]="user.userType !== 'client'"
+        >
+          Profilna Slika:
+        </label>
+        <label
+          for="profilePicture"
+          class="form-label"
+          [hidden]="user.userType !== 'agency'"
+        >
+          Logo agencije:
+        </label>
+        <input
+          type="file"
+          class="form-control-file"
+          id="profilePicture"
+          class="form-control"
+          (change)="onFileSelected($event)"
+          accept="image/jpeg, image/png"
+        />
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <button type="submit" class="btn btn-primary">Sačuvaj promene</button>
+        </div>
+
+        <div class="col text-end">
+          <a [routerLink]="['/change-password']" class="btn btn-secondary"
+            >Promena lozinke</a
+          >
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

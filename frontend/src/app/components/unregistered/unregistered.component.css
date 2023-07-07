@@ -1,0 +1,47 @@
+.table-responsive {
+  margin-top: 20px;
+}
+
+.page-header {
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.user-picture {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+h4 {
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.sort-icon {
+  margin-left: 5px;
+}
+
+.fa-sort-asc:before {
+  content: '\f0de';
+}
+
+.fa-sort-desc:before {
+  content: '\f0dd';
+}
+
+.fa {
+  font-family: FontAwesome;
+}
+
+.table-image {
+  td, th {
+    vertical-align: middle;
+  }
+}
+.container {
+  padding: 2rem 0rem;
+}

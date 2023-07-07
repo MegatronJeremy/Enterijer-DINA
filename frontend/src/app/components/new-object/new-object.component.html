@@ -1,0 +1,92 @@
+<div class="d-lg-flex justify-content-between">
+  <div class="form-container">
+    <h2 class="page-header">Dodavanje novog objekta</h2>
+    <form (submit)="createObj()">
+      <div class="mb-3">
+        <label class="form-label">Tip objekta:</label>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            [(ngModel)]="selectedObj.type"
+            name="objType"
+            id="houseRadio"
+            value="house"
+            selected
+          />
+          <label class="form-check-label" for="clientRadio">Kuća</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            [(ngModel)]="selectedObj.type"
+            name="objType"
+            id="apartmentRadio"
+            value="apartment"
+          />
+          <label class="form-check-label" for="agencyRadio">Stan</label>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="address" class="form-label">Adresa:</label>
+        <input
+          type="text"
+          id="address"
+          class="form-control"
+          [ngModel]="selectedObj.address"
+          (ngModelChange)="selectedObj.address = $event"
+          name="address"
+          placeholder="Unesite adresu"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="lastName" class="form-label">Površina:</label>
+        <input
+          type="number"
+          id="area"
+          class="form-control"
+          [ngModel]="selectedObj.area"
+          (ngModelChange)="selectedObj.area = $event"
+          name="area"
+          min="1"
+          placeholder="Unesite površinu"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="roomNum" class="form-label">Broj prostorija:</label>
+        <input
+          type="number"
+          id="roomNum"
+          class="form-control"
+          [ngModel]="selectedObj.roomNum"
+          (ngModelChange)="selectedObj.roomNum = $event"
+          name="roomNum"
+          min="1"
+          max="3"
+          placeholder="Unesite broj prostorija"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="formFile" class="form-label">Učitaj iz fajla</label>
+        <input
+          class="form-control-file form-control"
+          type="file"
+          id="formFile"
+          (change)="onFileSelected($event)"
+          accept="application/json"
+        />
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary">Sačuvaj objekat</button>
+      </div>
+    </form>
+  </div>
+  <div class="my-5">
+    <app-object-canvas #canvas [canvasObject]="selectedObj"></app-object-canvas>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+<div class="table-responsive">
+  <h2 class="page-header">Zahtevi za registraciju klijenata</h2>
+  <table
+    class="table table-hover table-bordered table-striped"
+    [hidden]="clients.length === 0"
+  >
+    <thead>
+      <tr>
+        <th scope="col">Slika</th>
+        <th scope="col">Korisničko ime</th>
+        <th scope="col">Telefon</th>
+        <th scope="col">Email</th>
+        <th scope="col">Ime</th>
+        <th scope="col">Prezime</th>
+        <th scope="col">Akcija</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of clients">
+        <td>
+          <img
+            *ngIf="user.profilePicture"
+            [src]="'http://localhost:4000/' + user.profilePicture"
+            class="user-picture"
+          />
+        </td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.clientInfo?.firstName }}</td>
+        <td>{{ user.clientInfo?.lastName }}</td>
+        <td>
+          <div class="col mb-3">
+            <button class="btn btn-success" (click)="approveRegistration(user)">
+              Odobri registraciju
+            </button>
+          </div>
+          <div class="col mb-3">
+            <button class="btn btn-danger" (click)="denyRegistration(user)">
+              Odbij registraciju
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 [hidden]="clients.length !== 0">
+    Trenutno nema zahteva za registraciju klijenata.
+  </h4>
+</div>
+<br />
+<div class="table-responsive">
+  <h2 class="page-header">Zahtevi za registraciju agencija</h2>
+  <table
+    class="table table-hover table-bordered table-striped"
+    [hidden]="agencies.length === 0"
+  >
+    <thead>
+      <tr>
+        <th scope="col">Slika</th>
+        <th scope="col">Korisničko ime</th>
+        <th scope="col">Telefon</th>
+        <th scope="col">Email</th>
+        <th scope="col">Naziv agencije</th>
+        <th scope="col">Grad</th>
+        <th scope="col">Ulica i broj</th>
+        <th scope="col">Matični broj</th>
+        <th scope="col">Opis</th>
+        <th scope="col">Akcija</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of agencies">
+        <td>
+          <img
+            *ngIf="user.profilePicture"
+            [src]="'http://localhost:4000/' + user.profilePicture"
+            class="user-picture"
+          />
+        </td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.agencyInfo?.agencyName }}</td>
+        <td>{{ user.agencyInfo?.city }}</td>
+        <td>{{ user.agencyInfo?.street }}</td>
+        <td>{{ user.agencyInfo?.registrationNumber }}</td>
+        <td>{{ user.agencyInfo?.description }}</td>
+        <td>
+          <div class="col mb-3">
+            <button class="btn btn-success" (click)="approveRegistration(user)">
+              Odobri registraciju
+            </button>
+          </div>
+          <div class="col mb-3">
+            <button class="btn btn-danger" (click)="denyRegistration(user)">
+              Odbij registraciju
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 [hidden]="agencies.length !== 0">
+    Trenutno nema zahteva za registraciju agencija.
+  </h4>
+</div>

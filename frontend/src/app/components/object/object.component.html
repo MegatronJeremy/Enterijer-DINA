@@ -1,0 +1,60 @@
+<div class="container">
+  <canvas #canvas class="canvas"></canvas>
+
+  <form class="d-lg-flex justify-content-between" *ngIf="!hideForm">
+    <div>
+      <div class="mb-3">
+        <label for="height" class="form-label">Visina nove sobe:</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="newRoomHeight"
+          name="newRoomHeight"
+          min="1"
+          [max]="CANVAS_WIDTH"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="width" class="form-label">Širina nove sobe:</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="newRoomWidth"
+          name="newRoomWidth"
+          min="1"
+          [max]="CANVAS_HEIGHT"
+        />
+      </div>
+      <div class="mb-3"></div>
+    </div>
+    <div>
+      <div class="row mb-3">
+        <input
+          type="checkbox"
+          class="btn-check"
+          id="btncheck2"
+          name="modeAddDoor"
+          [(ngModel)]="modeAddDoor"
+          (change)="changeMode(true)"
+        />
+        <label class="btn btn-outline-dark" for="btncheck2">Dodaj vrata</label>
+      </div>
+      <div class="row mb-3">
+        <input
+          type="checkbox"
+          class="btn-check"
+          id="btncheck1"
+          name="modeAddRoom"
+          [(ngModel)]="modeAddRoom"
+          (change)="changeMode(false)"
+        />
+        <label class="btn btn-outline-dark" for="btncheck1">Dodaj sobu</label>
+      </div>
+      <div class="row mb-3">
+        <button class="btn btn-danger" (click)="deleteSelected()">
+          Obriši selektovano
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

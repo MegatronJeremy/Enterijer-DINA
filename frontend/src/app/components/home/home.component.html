@@ -1,0 +1,90 @@
+<div class="container my-5">
+  <div
+    class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg"
+  >
+    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+      <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Enterijer DINA</h1>
+      <p class="lead">Izaberite željenu opciju za nastavak.</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg px-4"
+          [routerLink]="['/agencies']"
+          [hidden]="
+            authService.loggedIn() && authService.getUserType() !== 'client'
+          "
+        >
+          Agencije
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg px-4"
+          [routerLink]="['/objects']"
+          [hidden]="authService.getUserType() !== 'client'"
+        >
+          Objekti
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg px-4"
+          [routerLink]="['/workers']"
+          [hidden]="authService.getUserType() !== 'agency'"
+        >
+          Radnici
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg px-4"
+          [routerLink]="['/jobs']"
+          [hidden]="authService.getUserType() !== 'client'"
+        >
+          Poslovi
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg px-4"
+          [routerLink]="['/agency-jobs']"
+          [hidden]="authService.getUserType() !== 'agency'"
+        >
+          Poslovi
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-info btn-lg px-4 mx-2"
+          [routerLink]="['/profile']"
+          [hidden]="!authService.loggedIn()"
+        >
+          Profil
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-primary btn-lg px-4 ms-md-2"
+          [routerLink]="['/login']"
+          [hidden]="authService.loggedIn()"
+        >
+          Prijava
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-primary btn-lg px-4 me-md-2"
+          [routerLink]="['/register']"
+          [hidden]="authService.loggedIn()"
+        >
+          Registracija
+        </button>
+      </div>
+    </div>
+    <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
+      <img
+        class="rounded-lg-3"
+        src="http://localhost:4000/uploads/dune.jpg"
+        alt=""
+        width="720"
+      />
+    </div>
+  </div>
+</div>

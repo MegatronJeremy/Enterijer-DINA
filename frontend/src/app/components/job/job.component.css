@@ -1,0 +1,26 @@
+.rating {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+  color: #ddd;
+  /* Personal choice */
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label:hover,
+.rating label:hover~label,
+.rating input:checked+label,
+.rating input:checked+label~label {
+  color: #ffc107;
+  /* Personal color choice. Lifted from Bootstrap 4 */
+}
+
+.action-item {
+  min-width: 40%;
+}
+
+.canvas-container {
+  min-width: 40%;
+}

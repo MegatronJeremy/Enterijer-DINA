@@ -1,0 +1,23 @@
+.canvas {
+  border: 1px solid black;
+  width: 100%
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.row {
+  margin-top: 20px;
+}
+
+.col {
+  padding: 0 5px;
+}
+

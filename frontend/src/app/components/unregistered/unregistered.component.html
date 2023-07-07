@@ -1,0 +1,106 @@
+<h2 class="page-header">Pretraga agencija</h2>
+<form (ngSubmit)="searchAgencies()" class="row g-3">
+  <div class="col-md-6">
+    <label for="searchName" class="form-label">Ime agencije</label>
+    <input
+      type="text"
+      class="form-control"
+      id="searchName"
+      [(ngModel)]="searchName"
+      name="searchName"
+      placeholder="Unesite ime agencije"
+    />
+  </div>
+  <div class="col-md-6">
+    <label for="searchAddress" class="form-label">Adresa agencije</label>
+    <input
+      type="text"
+      class="form-control"
+      id="searchAddress"
+      [(ngModel)]="searchAddress"
+      name="searchAddress"
+      placeholder="Unesite adresu agencije"
+    />
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Pretrazi</button>
+  </div>
+</form>
+
+<div class="table-responsive">
+  <h2 class="page-header">Pregled agencija</h2>
+  <table
+    class="table table-hover table-bordered align-middle"
+    [hidden]="agencies.length === 0"
+  >
+    <thead>
+      <tr>
+        <th>Logo agencije</th>
+        <th (click)="sortAgencies('agencyInfo.agencyName')">
+          Naziv
+          <span *ngIf="sortBy === 'agencyInfo.agencyName'" class="sort-icon">
+            <i
+              class="fa"
+              [ngClass]="{ 'fa-sort-asc': sortAsc, 'fa-sort-desc': !sortAsc }"
+            ></i>
+          </span>
+        </th>
+        <th (click)="sortAgencies('agencyInfo.street')">
+          Adresa
+          <span *ngIf="sortBy === 'agencyInfo.street'" class="sort-icon">
+            <i
+              class="fa"
+              [ngClass]="{ 'fa-sort-asc': sortAsc, 'fa-sort-desc': !sortAsc }"
+            ></i>
+          </span>
+        </th>
+        <th>Kratak opis</th>
+        <th>Akcija</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of agencies">
+        <td class="d-flex justify-content-center">
+          <img
+            *ngIf="user.profilePicture"
+            [src]="'http://localhost:4000/' + user.profilePicture"
+            class="user-picture img-fluid img-thumbnail"
+          />
+        </td>
+        <td>{{ user.agencyInfo?.agencyName }}</td>
+        <td>{{ user.agencyInfo?.street }}</td>
+        <td>{{ user.agencyInfo?.description }}</td>
+        <td>
+          <span class="d-flex justify-content-center">
+            <button
+              type="button"
+              class="btn btn-info mx-auto"
+              [routerLink]="['/agency-reviews']"
+              [queryParams]="{
+                agency: user.username,
+                agencyName: user.agencyInfo?.agencyName
+              }"
+            >
+              <i class="far fa-eye"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-dark mx-auto"
+              [routerLink]="['/submit-job']"
+              [queryParams]="{
+                agency: user._id,
+                agencyName: user.agencyInfo?.agencyName
+              }"
+              [hidden]="!authService.loggedIn()"
+            >
+              <i class="far fa-paper-plane"></i>
+            </button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 [hidden]="agencies.length !== 0">
+    Ne postoji agencija po zadatom kriterijumu.
+  </h4>
+</div>

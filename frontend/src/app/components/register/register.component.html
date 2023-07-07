@@ -1,0 +1,226 @@
+<h2 class="text-center page-header">Registracija korisnika</h2>
+<form (submit)="onRegisterSubmit()" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label class="form-label">Tip registracije:</label>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        [(ngModel)]="registrationType"
+        name="registrationType"
+        id="clientRadio"
+        value="client"
+        selected
+      />
+      <label class="form-check-label" for="clientRadio">Klijent</label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        [(ngModel)]="registrationType"
+        name="registrationType"
+        id="agencyRadio"
+        value="agency"
+      />
+      <label class="form-check-label" for="agencyRadio">Agencija</label>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="username" class="form-label">Korisničko ime</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      [(ngModel)]="username"
+      name="username"
+      placeholder="Unesite korisničko ime"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="password1" class="form-label">Lozinka</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password1"
+      [(ngModel)]="password1"
+      name="password1"
+      placeholder="Unesite lozinku"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="password2" class="form-label">Potvrda lozinke</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password2"
+      [(ngModel)]="password2"
+      name="password2"
+      placeholder="Unesite potvrdu lozinke"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="phone" class="form-label">Kontakt telefon</label>
+    <input
+      type="text"
+      class="form-control"
+      id="phone"
+      [(ngModel)]="contactPhone"
+      name="contactPhone"
+      placeholder="Unesite kontakt telefon"
+    />
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">E-mail adresa</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      [(ngModel)]="emailAddress"
+      name="emailAddress"
+      placeholder="Unesite E-mail adresu"
+    />
+  </div>
+
+  <span [hidden]="registrationType !== 'client'">
+    <hr />
+    <div class="mb-3">
+      <label for="name" class="form-label">Ime</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        [(ngModel)]="firstName"
+        name="firstName"
+        placeholder="Unesite ime"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="surname" class="form-label">Prezime</label>
+      <input
+        type="text"
+        class="form-control"
+        id="surname"
+        [(ngModel)]="lastName"
+        name="lastName"
+        placeholder="Unesite prezime"
+      />
+    </div>
+  </span>
+
+  <span [hidden]="registrationType !== 'agency'">
+    <hr />
+    <div class="mb-3">
+      <label for="agencyName" class="form-label">Naziv agencije</label>
+      <input
+        type="text"
+        class="form-control"
+        id="agencyName"
+        [(ngModel)]="agencyName"
+        name="agencyName"
+        placeholder="Unesite naziv agencije"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="agencyCountry" class="form-label">Država</label>
+      <input
+        type="text"
+        class="form-control"
+        id="agencyCountry"
+        [(ngModel)]="agencyCountry"
+        name="agencyCountry"
+        placeholder="Unesite državu"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="agencyCity" class="form-label">Grad</label>
+      <input
+        type="text"
+        class="form-control"
+        id="agencyCity"
+        [(ngModel)]="agencyCity"
+        name="agencyCity"
+        placeholder="Unesite grad"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="agencyStreet" class="form-label">Ulica i broj</label>
+      <input
+        type="text"
+        class="form-control"
+        id="agencyStreet"
+        [(ngModel)]="agencyStreet"
+        name="agencyStreet"
+        placeholder="Unesite ulicu i broj"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="agencyRegistrationNumber" class="form-label"
+        >Matični broj agencije</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="agencyRegistrationNumber"
+        [(ngModel)]="registrationNumber"
+        name="registrationNumber"
+        placeholder="Unesite matični broj agencije"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="agencyDescription" class="form-label"
+        >Kratak tekstualni opis o agenciji</label
+      >
+      <textarea
+        class="form-control"
+        id="agencyDescription"
+        rows="3"
+        [(ngModel)]="description"
+        name="description"
+        placeholder="Unesite kratak tekstualni opis o agenciji"
+      ></textarea>
+    </div>
+  </span>
+
+  <div class="mb-3" [hidden]="registrationType === ''">
+    <hr />
+    <label
+      for="profilePicture"
+      class="form-label"
+      [hidden]="registrationType !== 'client'"
+      >Profilna Slika:
+    </label>
+
+    <label
+      for="profilePicture"
+      class="form-label"
+      [hidden]="registrationType !== 'agency'"
+      >Logo agencije:
+    </label>
+    <input
+      type="file"
+      class="form-control-file"
+      id="profilePicture"
+      class="form-control"
+      (change)="onFileSelected($event)"
+      accept="image/jpeg, image/png"
+    />
+  </div>
+
+  <button
+    type="submit"
+    class="btn btn-primary"
+    [hidden]="registrationType === ''"
+  >
+    Potvrdi
+  </button>
+</form>

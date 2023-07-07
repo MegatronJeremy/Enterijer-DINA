@@ -1,0 +1,46 @@
+.card {
+  border-radius: 5px;
+  background-color: #fff;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.star-active {
+  color: #FBC02D;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.star-active:hover {
+  color: #F9A825;
+  cursor: pointer;
+}
+
+.star-inactive {
+  color: #CFD8DC;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+.content {
+  font-size: 18px;
+}
+
+.profile-pic{
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 26px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+

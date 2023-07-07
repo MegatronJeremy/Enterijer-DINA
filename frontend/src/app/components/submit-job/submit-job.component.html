@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-evenly mt-5">
+  <h2 class="text-center fw-bold">Zahtev uređivanja objekta</h2>
+  <button class="btn btn-primary btn-lg px-4" [routerLink]="['/agencies']">
+    Nazad?
+  </button>
+</div>
+<form (submit)="onClickSubmit()">
+  <div class="d-lg-flex justify-content-between my-5">
+    <div>
+      <h2 class="fw-bold my-3">Agencija {{ agencyName }}</h2>
+      <h4 class="fw-bold my-3">Izaberite objekat</h4>
+      <div class="table-responsive">
+        <h4 [hidden]="objects.length !== 0">Trenutno nemate objekata</h4>
+        <table
+          class="table table-hover table-bordered align-middle"
+          [hidden]="objects.length === 0"
+        >
+          <thead>
+            <tr>
+              <th>Tip</th>
+              <th>Adresa</th>
+              <th>Broj prostorija</th>
+              <th>Kvadratura</th>
+              <th>Izbor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let obj of objects">
+              <td>{{ obj.type === "house" ? "Kuća" : "Stan" }}</td>
+              <td>{{ obj.address }}</td>
+              <td>{{ obj.roomNum }}</td>
+              <td>{{ obj.area }} m<sup>2</sup></td>
+              <td>
+                <span class="d-flex justify-content-start">
+                  <input
+                    type="radio"
+                    name="btncheck"
+                    class="btn-check"
+                    [id]="'btncheck' + obj._id"
+                    [checked]="selectedObj === obj"
+                    (click)="onClickSelect(obj)"
+                  />
+                  <label
+                    class="btn btn-success mx-auto"
+                    [for]="'btncheck' + obj._id"
+                    ><i class="fas fa-check"></i
+                  ></label>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex justify-content-between" *ngIf="objects.length !== 0">
+        <div class="d-flex my-auto">
+          <div class="mx-2">
+            <label for="timeStart" class="fw-bold">Datum početka</label>
+            <input
+              type="date"
+              class="form-control"
+              id="timeStart"
+              [(ngModel)]="timeStart"
+              name="timeStart"
+            />
+          </div>
+          <div class="mx-2">
+            <label for="timeEnd" class="fw-bold">Datum kraja</label>
+            <input
+              type="date"
+              class="form-control"
+              id="timeEnd"
+              [(ngModel)]="timeEnd"
+              name="timeEnd"
+            />
+          </div>
+        </div>
+        <div class="my-auto">
+          <button type="submit" class="btn btn-primary btn-lg">Potvrdi</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="my-5">
+      <app-object-canvas
+        [canvasObject]="selectedObj"
+        [hideForm]="true"
+      ></app-object-canvas>
+    </div>
+  </div>
+</form>

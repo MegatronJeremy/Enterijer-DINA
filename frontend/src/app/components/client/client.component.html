@@ -1,0 +1,151 @@
+<div class="table-responsive">
+  <div class="d-md-flex justify-content-between">
+    <div>
+      <h2 class="fw-bold mb-3 mt-3">Moji objekti</h2>
+    </div>
+
+    <button
+      class="btn btn-primary btn-lg mb-3 mt-3"
+      [routerLink]="['/new-object']"
+    >
+      Dodaj novi objekat
+    </button>
+  </div>
+  <h4 [hidden]="objects.length !== 0">Trenutno nemate objekata</h4>
+  <table
+    class="table table-hover table-bordered align-middle"
+    [hidden]="objects.length === 0"
+  >
+    <thead>
+      <tr>
+        <th>Tip</th>
+        <th>Adresa</th>
+        <th>Broj prostorija</th>
+        <th>Kvadratura</th>
+        <th>Akcija</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let obj of objects">
+        <td>{{ obj.type === "house" ? "Kuća" : "Stan" }}</td>
+        <td>{{ obj.address }}</td>
+        <td>{{ obj.roomNum }}</td>
+        <td>{{ obj.area }} m<sup>2</sup></td>
+        <td>
+          <span class="d-flex justify-content-start">
+            <input
+              type="radio"
+              name="btncheck"
+              class="btn-check"
+              [id]="'btncheck' + obj._id"
+              [checked]="selectedObj === obj"
+              (click)="onClickSelect(obj)"
+            />
+            <label class="btn btn-info mx-auto" [for]="'btncheck' + obj._id"
+              ><i class="far fa-eye"></i
+            ></label>
+            <button class="btn btn-danger mx-auto" (click)="onClickDelete(obj)">
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="d-lg-flex justify-content-between">
+  <div class="form-container">
+    <h2 class="fw-bold mb-3 mt-3">Izabrani objekat</h2>
+    <div *ngIf="!selectedObj">
+      <h4>Niste izabrali objekat</h4>
+    </div>
+    <div *ngIf="selectedObj">
+      <form (submit)="updateSelectedObj()">
+        <div class="mb-3">
+          <label class="form-label">Tip objekta:</label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              [(ngModel)]="selectedObj.type"
+              name="objType"
+              id="houseRadio"
+              value="house"
+              selected
+            />
+            <label class="form-check-label" for="clientRadio">Kuća</label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              [(ngModel)]="selectedObj.type"
+              name="objType"
+              id="apartmentRadio"
+              value="apartment"
+            />
+            <label class="form-check-label" for="agencyRadio">Stan</label>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="address" class="form-label">Adresa:</label>
+          <input
+            type="text"
+            id="address"
+            class="form-control"
+            [ngModel]="selectedObj.address"
+            (ngModelChange)="
+              selectedObj.address && (selectedObj.address = $event)
+            "
+            name="address"
+            placeholder="Unesite adresu"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Površina:</label>
+          <input
+            type="number"
+            id="area"
+            class="form-control"
+            [ngModel]="selectedObj.area"
+            (ngModelChange)="selectedObj.area && (selectedObj.area = $event)"
+            name="area"
+            min="1"
+            placeholder="Unesite površinu"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="roomNum" class="form-label">Broj prostorija:</label>
+          <input
+            type="number"
+            id="roomNum"
+            class="form-control"
+            [ngModel]="selectedObj.roomNum"
+            (ngModelChange)="
+              selectedObj.roomNum && (selectedObj.roomNum = $event)
+            "
+            name="roomNum"
+            min="1"
+            max="3"
+            placeholder="Unesite broj prostorija"
+          />
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <button type="submit" class="btn btn-primary">
+              Sačuvaj promene
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div *ngIf="selectedObj">
+    <app-object-canvas #canvas [canvasObject]="selectedObj"></app-object-canvas>
+  </div>
+</div>
