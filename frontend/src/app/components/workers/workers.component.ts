@@ -201,22 +201,24 @@ export class WorkersComponent implements OnInit {
   }
 
   onClickDelete(worker: Workers) {
-    this.workersService.deleteWorker(worker._id).subscribe((data: any) => {
-      if (data.success) {
-        this.vacancy.vacancies++;
-        this.workersService
-          .updateVacancyRequest(this.vacancy)
-          .subscribe((data: any) => {
-            if (data.success) {
-              this.toastr.success(data.msg);
-            } else {
-              this.toastr.error(data.msg);
-            }
-          });
-      } else {
-        this.toastr.error(data.msg);
-      }
-    });
+    if (worker !== this.workerToAdd) {
+      this.workersService.deleteWorker(worker._id).subscribe((data: any) => {
+        if (data.success) {
+          this.vacancy.vacancies++;
+          this.workersService
+            .updateVacancyRequest(this.vacancy)
+            .subscribe((data: any) => {
+              if (data.success) {
+                this.toastr.success(data.msg);
+              } else {
+                this.toastr.error(data.msg);
+              }
+            });
+        } else {
+          this.toastr.error(data.msg);
+        }
+      });
+    }
 
     this.workers = this.workers.filter((w) => w._id !== worker._id);
     this.workerToEdit = undefined;
