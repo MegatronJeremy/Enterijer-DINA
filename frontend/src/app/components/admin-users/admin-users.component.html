@@ -99,4 +99,4 @@
   [user]="userToEdit"
   [inputMode]="true"
 ></app-workers>
-<app-register *ngIf="userToAdd && !userToEdit"></app-register>
+<app-register [admin]="true" *ngIf="userToAdd && !userToEdit"></app-register>

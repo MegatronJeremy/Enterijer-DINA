@@ -41,7 +41,7 @@ export class UnregisteredComponent implements OnInit {
             user.agencyInfo?.agencyName
               .toLowerCase()
               .includes(this.searchName.toLowerCase()) &&
-            user.agencyInfo?.street
+            User.agencyAddress(user)
               .toLowerCase()
               .includes(this.searchAddress.toLowerCase())
           );
@@ -62,11 +62,11 @@ export class UnregisteredComponent implements OnInit {
       const valA =
         column === 'agencyName'
           ? a.agencyInfo?.agencyName
-          : a.agencyInfo?.street;
+          : User.agencyAddress(a);
       const valB =
         column === 'agencyName'
           ? b.agencyInfo?.agencyName
-          : b.agencyInfo?.street;
+          : User.agencyAddress(b);
 
       if (valA && valB) {
         if (this.sortAsc) {

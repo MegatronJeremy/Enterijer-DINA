@@ -108,6 +108,7 @@ export class AgencyJobsComponent implements OnInit {
     room.workers.push(worker);
     worker.working = true;
     this.workers.splice(this.workers.indexOf(worker), 1);
+
     this.updateWorkerNum();
 
     this.canvasObjectService
@@ -117,6 +118,39 @@ export class AgencyJobsComponent implements OnInit {
           this.workersService.updateWorker(worker).subscribe((data: any) => {
             if (data.success) {
               this.toastr.success('Radnik uspešno dodeljen');
+            } else {
+              this.toastr.error(data.msg);
+            }
+          });
+        } else {
+          this.toastr.error(data.msg);
+        }
+      });
+  }
+
+  deassignWorker(worker: Workers) {
+    if (!this.canvasComponent?.selectedRoom) {
+      return;
+    }
+
+    let room: Room = this.canvasComponent?.selectedRoom;
+
+    if (!room.workers) {
+      return;
+    }
+
+    room.workers.splice(room.workers.indexOf(worker), 1);
+    worker.working = false;
+    this.workers.push(worker);
+    this.updateWorkerNum();
+
+    this.canvasObjectService
+      .updateCanvasObject(this.selectedObj!)
+      .subscribe((data: any) => {
+        if (data.success) {
+          this.workersService.updateWorker(worker).subscribe((data: any) => {
+            if (data.success) {
+              this.toastr.success('Radnik uspešno uklonjen');
             } else {
               this.toastr.error(data.msg);
             }
@@ -149,6 +183,7 @@ export class AgencyJobsComponent implements OnInit {
         this.setDefaultRoomState(job);
       }
     });
+    this.canvasComponent?.drawObject();
   }
 
   setRoomState(job: Job, state: string) {
@@ -206,9 +241,7 @@ export class AgencyJobsComponent implements OnInit {
     return (
       !this.selectedObj?.activelyWorkedOn &&
       this.selectedGroup === 'active' &&
-      obj.rooms.some(
-        (room) => room.workers === undefined || room.workers.length === 0
-      )
+      this.workers.length > 0
     );
   }
 
@@ -217,6 +250,11 @@ export class AgencyJobsComponent implements OnInit {
   }
 
   sendOffer(job: Job): void {
+    if (!job.payOffer || job.payOffer <= 0) {
+      this.toastr.error('Ponuda mora biti pozitivan broj');
+      return;
+    }
+
     job.status = 'pending';
     this.jobsService.updateJob(job).subscribe((data: any) => {
       if (data.success) {

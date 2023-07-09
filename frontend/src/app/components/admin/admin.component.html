@@ -30,15 +30,15 @@
         <td>{{ user.clientInfo?.firstName }}</td>
         <td>{{ user.clientInfo?.lastName }}</td>
         <td>
-          <span class="d-flex justify-content-between">
+          <span class="d-flex justify-content-evenly">
             <button
-              class="btn btn-success btn-lg mx-2 my-auto"
+              class="btn btn-success btn-lg my-auto"
               (click)="approveRegistration(user)"
             >
               <i class="fas fa-check"></i>
             </button>
             <button
-              class="btn btn-danger btn-lg mx-2 my-auto"
+              class="btn btn-danger btn-lg my-auto"
               (click)="denyRegistration(user)"
             >
               <i class="fas fa-x"></i>

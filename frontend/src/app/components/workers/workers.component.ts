@@ -174,13 +174,14 @@ export class WorkersComponent implements OnInit {
           .createWorker(this.workerToEdit)
           .subscribe((data: any) => {
             if (data.success) {
-              this.toastr.success(data.msg);
               this.vacancy.vacancies--;
               this.workerToAdd = undefined;
               this.workersService
                 .updateVacancyRequest(this.vacancy)
                 .subscribe((data: any) => {
-                  if (!data.success) {
+                  if (data.success) {
+                    this.toastr.success('Radnik uspešno kreiran');
+                  } else {
                     this.toastr.error(data.msg);
                   }
                 });
@@ -224,6 +225,7 @@ export class WorkersComponent implements OnInit {
 
   addWorker() {
     this.workerToAdd = new Workers();
+    this.workerToAdd._id = Math.random().toString(36);
     this.workerToAdd.agency = this.user!._id;
     this.workers.push(this.workerToAdd);
     this.workerToEdit = this.workerToAdd;

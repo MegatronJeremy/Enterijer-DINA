@@ -20,7 +20,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private validateService: ValidateService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -73,6 +74,9 @@ export class ProfileComponent implements OnInit {
               if (data.success) {
                 this.ngOnInit();
                 this.toastr.success('Profil uspesno ažuriran');
+                if (this.inputMode) {
+                  window.location.reload();
+                }
               } else {
                 this.toastr.error('Ažuriranje profila neuspešno');
               }
@@ -80,6 +84,9 @@ export class ProfileComponent implements OnInit {
         } else {
           this.ngOnInit();
           this.toastr.success('Profil uspesno ažuriran');
+          if (this.inputMode) {
+            window.location.reload();
+          }
         }
       } else {
         this.toastr.error('Ažuriranje profila neuspešno');

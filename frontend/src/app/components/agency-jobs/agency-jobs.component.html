@@ -165,7 +165,9 @@
             class="table-responsive d-flex flex-column"
             *ngIf="canvasComponent?.selectedRoom"
           >
-            <h4 class="fs-4 my-3">Izaberite radnika za prostoriju</h4>
+            <h4 class="fs-4 my-3">
+              Izaberite radnike koji ce raditi na prostoriji
+            </h4>
             <table
               class="table table-hover table-bordered align-middle"
               *ngIf="workers.length !== 0"
@@ -176,7 +178,7 @@
                   <th>Specijalizacija</th>
                   <th>Email</th>
                   <th>Telefon</th>
-                  <th>Dodaj</th>
+                  <th>Dodeli</th>
                 </tr>
               </thead>
               <tbody>
@@ -207,7 +209,7 @@
           </span>
         </span>
         <span *ngIf="!minWorkersCondition(selectedObj)">
-          <h4 class="fs-4 my-auto">Nemate dovoljno radnika za ovaj objekat</h4>
+          <h4 class="fs-4 my-auto">Nemate dovoljno radnika</h4>
         </span>
       </li>
     </ul>
@@ -238,6 +240,7 @@
                   <th>Email</th>
                   <th>Telefon</th>
                   <th>Specijalizacija</th>
+                  <th *ngIf="!selectedObj?.activelyWorkedOn">Ukloni</th>
                 </tr>
               </thead>
               <tbody>
@@ -249,6 +252,16 @@
                   <td>{{ worker.phone }}</td>
                   <td>
                     {{ worker.specialty }}
+                  </td>
+                  <td *ngIf="!selectedObj?.activelyWorkedOn">
+                    <span class="d-flex justify-content-start">
+                      <button
+                        class="btn btn-danger mx-auto"
+                        (click)="deassignWorker(worker)"
+                      >
+                        <i class="fas fa-x"></i>
+                      </button>
+                    </span>
                   </td>
                 </tr>
               </tbody>

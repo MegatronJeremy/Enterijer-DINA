@@ -36,18 +36,18 @@
     <thead>
       <tr>
         <th>Logo agencije</th>
-        <th (click)="sortAgencies('agencyInfo.agencyName')">
+        <th (click)="sortAgencies('agencyName')">
           Naziv
-          <span *ngIf="sortBy === 'agencyInfo.agencyName'" class="sort-icon">
+          <span *ngIf="sortBy === 'agencyName'" class="sort-icon">
             <i
               class="fa"
               [ngClass]="{ 'fa-sort-asc': sortAsc, 'fa-sort-desc': !sortAsc }"
             ></i>
           </span>
         </th>
-        <th (click)="sortAgencies('agencyInfo.street')">
+        <th (click)="sortAgencies('address')">
           Adresa
-          <span *ngIf="sortBy === 'agencyInfo.street'" class="sort-icon">
+          <span *ngIf="sortBy === 'address'" class="sort-icon">
             <i
               class="fa"
               [ngClass]="{ 'fa-sort-asc': sortAsc, 'fa-sort-desc': !sortAsc }"

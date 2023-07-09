@@ -135,6 +135,8 @@ export class RegisterComponent implements OnInit {
       user.registered = false;
     }
 
+    console.log(this.admin);
+
     this.authService.registerUser(user).subscribe((data: any) => {
       if (data.success) {
         if (this.selectedFile) {
@@ -147,6 +149,7 @@ export class RegisterComponent implements OnInit {
                   this.router.navigate(['/login']);
                 } else {
                   this.toastr.success('Korisnik je registrovan');
+                  window.location.reload();
                 }
               } else {
                 this.toastr.error('Neuspešno slanje slike');
@@ -159,6 +162,7 @@ export class RegisterComponent implements OnInit {
             this.router.navigate(['/login']);
           } else {
             this.toastr.success('Korisnik je registrovan');
+            window.location.reload();
           }
         }
       } else {

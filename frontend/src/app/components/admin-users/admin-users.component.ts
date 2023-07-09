@@ -26,7 +26,7 @@ export class AdminUsersComponent implements OnInit {
     this.authService.getAllUsers().subscribe((data: any) => {
       if (data.success) {
         this.users = data.users.filter((user: User) => {
-          return user.userType !== 'admin';
+          return user.userType !== 'admin' && user.registered;
         });
         this.users.sort((a: User, b: User) => {
           return a.username.localeCompare(b.username);
