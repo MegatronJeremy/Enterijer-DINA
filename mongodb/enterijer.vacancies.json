@@ -1,0 +1,36 @@
+[{
+  "_id": {
+    "$oid": "64a714e68d88559170a44992"
+  },
+  "vacancies": 19,
+  "vacanciesRequested": 0,
+  "agency": "649d92d60090e80822cc84e4",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a8723d75980f4cc9f348f6"
+  },
+  "vacancies": 0,
+  "vacanciesRequested": 0,
+  "agency": "64a121e9eb676bee0dab8d52",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64aa62fe3b05e3d0d03aeb85"
+  },
+  "vacancies": 0,
+  "vacanciesRequested": 0,
+  "agency": "649dc2380b08c8146a22d462",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64aa6eb3c5d8affc9a3ce47f"
+  },
+  "vacancies": 2,
+  "vacanciesRequested": 0,
+  "agency": "64aa6e4c3b05e3d0d03aec4a",
+  "__v": 0
+}]

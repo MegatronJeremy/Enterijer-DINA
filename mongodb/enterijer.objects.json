@@ -1,0 +1,1278 @@
+[{
+  "_id": {
+    "$oid": "64a08d7f79fb538c1256d92f"
+  },
+  "type": "apartment",
+  "address": "Spanskih boraca 32A",
+  "area": 29,
+  "doors": [
+    {
+      "x": 45,
+      "y": 25,
+      "width": 30,
+      "height": 8,
+      "_id": {
+        "$oid": "64a039d53880f81663fb3686"
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "x": 29.2333984375,
+      "y": 28.816650390625,
+      "width": 200,
+      "height": 200,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a07dad8d7c30ec764f92fb"
+      },
+      "workers": []
+    }
+  ],
+  "user": "zika",
+  "__v": 15,
+  "roomNum": 1,
+  "beingCreated": true
+},
+{
+  "_id": {
+    "$oid": "64a08d8179fb538c1256d930"
+  },
+  "type": "apartment",
+  "address": "Spanskih boraca 32A/9",
+  "area": 29,
+  "doors": [
+    {
+      "x": 429.2333984375,
+      "y": 159.816650390625,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a08cf38d7c30ec764f9415"
+      }
+    },
+    {
+      "x": 290.2333984375,
+      "y": 211.816650390625,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a08d5e8d7c30ec764f9467"
+      }
+    },
+    {
+      "x": 287.2333984375,
+      "y": 112.816650390625,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a08d5e8d7c30ec764f9468"
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "x": 232.2333984375,
+      "y": 117.816650390625,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a08cf38d7c30ec764f9418"
+      },
+      "workers": []
+    }
+  ],
+  "user": "zika",
+  "__v": 23,
+  "roomNum": 1,
+  "beingCreated": true
+},
+{
+  "_id": {
+    "$oid": "64a08fab79fb538c1256d931"
+  },
+  "type": "house",
+  "address": "Spanskih boraca 32A/9",
+  "area": 78,
+  "doors": [
+    {
+      "x": 45,
+      "y": 25,
+      "width": 30,
+      "height": 8,
+      "_id": {
+        "$oid": "64a039d53880f81663fb3686"
+      }
+    },
+    {
+      "x": 26.2333984375,
+      "y": 117.816650390625,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a08c1c8d7c30ec764f93e3"
+      }
+    },
+    {
+      "x": 26.2333984375,
+      "y": 147.816650390625,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a08c938d7c30ec764f9405"
+      }
+    },
+    {
+      "x": 429.2333984375,
+      "y": 159.816650390625,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a08cf38d7c30ec764f9415"
+      }
+    },
+    {
+      "x": 225.2333984375,
+      "y": 141.816650390625,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a08cf38d7c30ec764f9416"
+      }
+    },
+    {
+      "x": 290.2333984375,
+      "y": 211.816650390625,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a08d5e8d7c30ec764f9467"
+      }
+    },
+    {
+      "x": 287.2333984375,
+      "y": 112.816650390625,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a08d5e8d7c30ec764f9468"
+      }
+    },
+    {
+      "x": 130.7333984375,
+      "y": 326.7166748046875,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a090688d7c30ec764f960e"
+      }
+    },
+    {
+      "x": 262.595530632506,
+      "y": 257.8677578581755,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a13ce7eb676bee0dab93c1"
+      }
+    }
+  ],
+  "rooms": [
+    {
+      "x": 29.2333984375,
+      "y": 28.816650390625,
+      "width": 200,
+      "height": 200,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a07dad8d7c30ec764f92fb"
+      }
+    },
+    {
+      "x": 232.2333984375,
+      "y": 117.816650390625,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a08cf38d7c30ec764f9418"
+      }
+    },
+    {
+      "x": 67.7333984375,
+      "y": 230.7166748046875,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a090688d7c30ec764f9611"
+      }
+    }
+  ],
+  "user": "zika",
+  "__v": 24,
+  "roomNum": 3,
+  "beingCreated": true
+},
+{
+  "_id": {
+    "$oid": "64a09b1750eed265a48705f5"
+  },
+  "user": "zika",
+  "type": "house",
+  "address": "Spanskih boraca 666",
+  "area": 120,
+  "roomNum": 3,
+  "rooms": [
+    {
+      "x": 51.2333984375,
+      "y": 173.8000030517578,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a09b1750eed265a48705f6"
+      }
+    },
+    {
+      "x": 252.2333984375,
+      "y": 53.80000305175781,
+      "width": 100,
+      "height": 250,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a09b1750eed265a48705f7"
+      }
+    },
+    {
+      "x": 353.2333984375,
+      "y": 173.8000030517578,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a09b1750eed265a48705f8"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 284.2333984375,
+      "y": 300.8000030517578,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a09b1750eed265a48705f9"
+      }
+    },
+    {
+      "x": 246.2333984375,
+      "y": 201.8000030517578,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a09b1750eed265a48705fa"
+      }
+    },
+    {
+      "x": 46.2333984375,
+      "y": 198.8000030517578,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a09b1750eed265a48705fb"
+      }
+    },
+    {
+      "x": 549.2333984375,
+      "y": 202.8000030517578,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a09b1750eed265a48705fc"
+      }
+    },
+    {
+      "x": 290.2333984375,
+      "y": 48.80000305175781,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a09b1750eed265a48705fd"
+      }
+    },
+    {
+      "x": 347.2333984375,
+      "y": 194.8000030517578,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a09b1750eed265a48705fe"
+      }
+    }
+  ],
+  "__v": 0,
+  "beingCreated": true
+},
+{
+  "_id": {
+    "$oid": "64a0a56350eed265a48706c2"
+  },
+  "user": "zika",
+  "type": "apartment",
+  "address": "Spanskih boraca 32A",
+  "area": 29,
+  "roomNum": 2,
+  "rooms": [
+    {
+      "x": 29.2333984375,
+      "y": 28.816650390625,
+      "width": 200,
+      "height": 200,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a0a56350eed265a48706c3"
+      }
+    },
+    {
+      "x": 231.5,
+      "y": 67.39999389648438,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a11480eb676bee0dab85af"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 45,
+      "y": 25,
+      "width": 30,
+      "height": 8,
+      "_id": {
+        "$oid": "64a0a56350eed265a48706c4"
+      }
+    },
+    {
+      "x": 224,
+      "y": 139.8000030517578,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a0a56350eed265a48706c5"
+      }
+    },
+    {
+      "x": 225.5,
+      "y": 194.39999389648438,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a11480eb676bee0dab85aa"
+      }
+    },
+    {
+      "x": 100.5,
+      "y": 223.39999389648438,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a11480eb676bee0dab85ab"
+      }
+    },
+    {
+      "x": 24.5,
+      "y": 122.39999389648438,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a11480eb676bee0dab85ac"
+      }
+    },
+    {
+      "x": 282.5,
+      "y": 161.39999389648438,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a11480eb676bee0dab85ad"
+      }
+    }
+  ],
+  "__v": 2,
+  "beingCreated": true
+},
+{
+  "_id": {
+    "$oid": "64a11fb4eb676bee0dab8c44"
+  },
+  "user": "stefantm",
+  "type": "house",
+  "address": "Cvetanova Cuprija 107L",
+  "area": 80,
+  "roomNum": 2,
+  "rooms": [
+    {
+      "x": 117,
+      "y": 133.8000030517578,
+      "width": 200,
+      "height": 200,
+      "borderSize": 3,
+      "roomState": "not started",
+      "workers": [],
+      "_id": {
+        "$oid": "64a11fb4eb676bee0dab8c45"
+      }
+    },
+    {
+      "x": 317,
+      "y": 88.80000305175781,
+      "width": 200,
+      "height": 300,
+      "borderSize": 3,
+      "roomState": "not started",
+      "workers": [],
+      "_id": {
+        "$oid": "64a11fb4eb676bee0dab8c46"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 203,
+      "y": 327.8000030517578,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a11fb4eb676bee0dab8c47"
+      }
+    },
+    {
+      "x": 312,
+      "y": 215.8000030517578,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a11fb4eb676bee0dab8c48"
+      }
+    },
+    {
+      "x": 513,
+      "y": 207.8000030517578,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a11fb4eb676bee0dab8c49"
+      }
+    },
+    {
+      "x": 381,
+      "y": 84.80000305175781,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a11fb4eb676bee0dab8c4a"
+      }
+    },
+    {
+      "x": 112,
+      "y": 201.8000030517578,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a11fb4eb676bee0dab8c4c"
+      }
+    },
+    {
+      "x": 205.5,
+      "y": 128.39999389648438,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a120fbeb676bee0dab8cee"
+      }
+    }
+  ],
+  "__v": 64,
+  "activelyWorkedOn": true,
+  "beingCreated": false
+},
+{
+  "_id": {
+    "$oid": "64a12166eb676bee0dab8d13"
+  },
+  "user": "stefantm",
+  "type": "house",
+  "address": "Cvetanova Cuprija 117",
+  "area": 90,
+  "roomNum": 2,
+  "rooms": [
+    {
+      "x": 22,
+      "y": 119.80000305175781,
+      "width": 300,
+      "height": 200,
+      "borderSize": 3,
+      "roomState": "not started",
+      "workers": [],
+      "_id": {
+        "$oid": "64a12166eb676bee0dab8d14"
+      }
+    },
+    {
+      "x": 324,
+      "y": 120.80000305175781,
+      "width": 200,
+      "height": 200,
+      "borderSize": 3,
+      "roomState": "not started",
+      "workers": [],
+      "_id": {
+        "$oid": "64a12166eb676bee0dab8d15"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 408,
+      "y": 317.8000030517578,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a12166eb676bee0dab8d16"
+      }
+    },
+    {
+      "x": 126,
+      "y": 317.8000030517578,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a12166eb676bee0dab8d17"
+      }
+    },
+    {
+      "x": 128,
+      "y": 112.80000305175781,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a12166eb676bee0dab8d18"
+      }
+    },
+    {
+      "x": 400,
+      "y": 113.80000305175781,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a12166eb676bee0dab8d19"
+      }
+    },
+    {
+      "x": 17,
+      "y": 200.8000030517578,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a12166eb676bee0dab8d1a"
+      }
+    }
+  ],
+  "__v": 14,
+  "activelyWorkedOn": true,
+  "beingCreated": false
+},
+{
+  "_id": {
+    "$oid": "64a125a9eb676bee0dab8da9"
+  },
+  "user": "filip",
+  "type": "house",
+  "address": "Orjenski bataljon 31",
+  "area": 30,
+  "roomNum": 1,
+  "rooms": [
+    {
+      "x": 105,
+      "y": 37.80000305175781,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a125a9eb676bee0dab8daa"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 181,
+      "y": 130.8000030517578,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a125a9eb676bee0dab8dab"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a12b91eb676bee0dab8de4"
+  },
+  "user": "filip",
+  "type": "apartment",
+  "address": "Aaaaa",
+  "area": 98,
+  "roomNum": 2,
+  "rooms": [
+    {
+      "x": 200,
+      "y": 64.60362726063549,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a12b91eb676bee0dab8de5"
+      }
+    },
+    {
+      "x": 200,
+      "y": 163.38414068026333,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a12b91eb676bee0dab8de6"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 297.7522935779817,
+      "y": 163.87194543066386,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a12b91eb676bee0dab8de7"
+      }
+    },
+    {
+      "x": 395,
+      "y": 90.70121542532351,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a12b91eb676bee0dab8de8"
+      }
+    },
+    {
+      "x": 266.559633027523,
+      "y": 258.9938944376063,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a12b91eb676bee0dab8de9"
+      }
+    },
+    {
+      "x": 395,
+      "y": 191.3109691826665,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a12b91eb676bee0dab8dea"
+      }
+    }
+  ],
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a174dcec60d81a218822ee"
+  },
+  "user": "zika",
+  "type": "apartment",
+  "address": "ccc",
+  "area": 90,
+  "roomNum": 3,
+  "rooms": [
+    {
+      "x": 209.80066445182723,
+      "y": 105.4726368159204,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a174dcec60d81a218822ef"
+      }
+    },
+    {
+      "x": 218.77076411960132,
+      "y": 203.98009950248758,
+      "width": 50,
+      "height": 50,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a174dcec60d81a218822f0"
+      }
+    },
+    {
+      "x": 338.3720930232558,
+      "y": 203.98009950248758,
+      "width": 50,
+      "height": 50,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a174dcec60d81a218822f1"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 227.72425249169436,
+      "y": 246.74129353233832,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a174dcec60d81a218822f2"
+      }
+    },
+    {
+      "x": 351.312292358804,
+      "y": 247.7363184079602,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a174dcec60d81a218822f3"
+      }
+    },
+    {
+      "x": 288.5215946843854,
+      "y": 100.4726368159204,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a174dcec60d81a218822f4"
+      }
+    }
+  ],
+  "__v": 0,
+  "beingCreated": true
+},
+{
+  "_id": {
+    "$oid": "64a1bb4be0c60735e1e2d785"
+  },
+  "user": "zika",
+  "type": "house",
+  "address": "ioioio",
+  "area": 90,
+  "roomNum": 2,
+  "rooms": [
+    {
+      "x": 237.34900010537322,
+      "y": 114.48529776988721,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a1bb4be0c60735e1e2d786"
+      }
+    },
+    {
+      "x": 237.34900010537322,
+      "y": 213.0373353298734,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a1bb4be0c60735e1e2d787"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 316.0952244424524,
+      "y": 305.59389776299105,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a1bb4be0c60735e1e2d788"
+      }
+    },
+    {
+      "x": 312.10730899782953,
+      "y": 206.04638507613632,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a1bb4be0c60735e1e2d789"
+      }
+    },
+    {
+      "x": 306.1254358308953,
+      "y": 108.48982264301866,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a1bb4be0c60735e1e2d78a"
+      }
+    }
+  ],
+  "beingCreated": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a1bdcfe0c60735e1e2dc6a"
+  },
+  "user": "zika",
+  "type": "apartment",
+  "address": "Spanskih boraca 32A",
+  "area": 29,
+  "roomNum": 1,
+  "rooms": [
+    {
+      "x": 29.2333984375,
+      "y": 28.816650390625,
+      "width": 200,
+      "height": 200,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a1bdcfe0c60735e1e2dc6b"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 45,
+      "y": 25,
+      "width": 30,
+      "height": 8,
+      "_id": {
+        "$oid": "64a1bdcfe0c60735e1e2dc6c"
+      }
+    }
+  ],
+  "beingCreated": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a1bf7ce0c60735e1e2de53"
+  },
+  "user": "zika",
+  "type": "apartment",
+  "address": "Spanskih boraca 32A",
+  "area": 29,
+  "roomNum": 1,
+  "rooms": [
+    {
+      "x": 29.2333984375,
+      "y": 28.816650390625,
+      "width": 200,
+      "height": 200,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a1bf7ce0c60735e1e2de54"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 45,
+      "y": 25,
+      "width": 30,
+      "height": 8,
+      "_id": {
+        "$oid": "64a1bf7ce0c60735e1e2de55"
+      }
+    }
+  ],
+  "beingCreated": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a1c25052d77de53052f2ba"
+  },
+  "user": "zika",
+  "type": "house",
+  "address": "Spanskih boraca 999",
+  "area": 45,
+  "roomNum": 2,
+  "rooms": [
+    {
+      "x": 290.36296654381226,
+      "y": 144.23953596276428,
+      "width": 200,
+      "height": 200,
+      "borderSize": 3,
+      "roomState": "not started",
+      "workers": [],
+      "_id": {
+        "$oid": "64a1c25052d77de53052f2bb"
+      }
+    },
+    {
+      "x": 88.20598006644519,
+      "y": 243.78109452736317,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "roomState": "not started",
+      "workers": [],
+      "_id": {
+        "$oid": "64a6d6f76fd9cded28f80177"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 306.12956810631226,
+      "y": 140.42288557213928,
+      "width": 30,
+      "height": 8,
+      "_id": {
+        "$oid": "64a1c25052d77de53052f2bc"
+      }
+    },
+    {
+      "x": 172.90697674418607,
+      "y": 341.2686567164173,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a6d6f76fd9cded28f80172"
+      }
+    },
+    {
+      "x": 283.53820598006644,
+      "y": 261.66666666666663,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a6d6f76fd9cded28f80173"
+      }
+    },
+    {
+      "x": 286.5282392026578,
+      "y": 193.00995024875618,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a6d6f76fd9cded28f80174"
+      }
+    },
+    {
+      "x": 284.5348837209302,
+      "y": 299.4776119402985,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a6d6f76fd9cded28f80175"
+      }
+    }
+  ],
+  "beingCreated": false,
+  "__v": 17,
+  "activelyWorkedOn": true
+},
+{
+  "_id": {
+    "$oid": "64a2fd148fbd485d73bb37e0"
+  },
+  "user": "zika",
+  "type": "apartment",
+  "address": "Spanskih boraca 32A",
+  "area": 29,
+  "roomNum": 1,
+  "rooms": [
+    {
+      "x": 29.2333984375,
+      "y": 28.816650390625,
+      "width": 200,
+      "height": 200,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a2fd148fbd485d73bb37e1"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 45,
+      "y": 25,
+      "width": 30,
+      "height": 8,
+      "_id": {
+        "$oid": "64a2fd148fbd485d73bb37e2"
+      }
+    },
+    {
+      "x": 224.1331915613882,
+      "y": 147.3019571097252,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a2fd148fbd485d73bb37e3"
+      }
+    }
+  ],
+  "beingCreated": true,
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "64a429c25663154ccac566ca"
+  },
+  "user": "zika",
+  "type": "apartment",
+  "address": "Spanskih boraca 32A",
+  "area": 29,
+  "roomNum": 1,
+  "rooms": [
+    {
+      "x": 29.2333984375,
+      "y": 28.816650390625,
+      "width": 200,
+      "height": 200,
+      "borderSize": 3,
+      "_id": {
+        "$oid": "64a429c25663154ccac566cb"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 45,
+      "y": 25,
+      "width": 30,
+      "height": 8,
+      "_id": {
+        "$oid": "64a429c25663154ccac566cc"
+      }
+    }
+  ],
+  "beingCreated": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a429c65663154ccac56708"
+  },
+  "user": "zika",
+  "type": "apartment",
+  "address": "Spanskih boraca 32A",
+  "area": 29,
+  "roomNum": 2,
+  "rooms": [
+    {
+      "x": 261.6279069767441,
+      "y": 164.1791044776119,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "roomState": "working",
+      "workers": [
+        {
+          "_id": "64a7c8957763e3c31549fb81",
+          "firstName": "Mihailo",
+          "lastName": "Bisenic",
+          "email": "biske@etf.rs",
+          "phone": "+381616667777",
+          "specialty": "Projektovanje lasera",
+          "working": true,
+          "agency": "649d92d60090e80822cc84e4",
+          "__v": 0
+        }
+      ],
+      "_id": {
+        "$oid": "64a7b92f2c0895d47b2902b7"
+      }
+    },
+    {
+      "x": 59.30232558139531,
+      "y": 63.68159203980096,
+      "width": 200,
+      "height": 200,
+      "borderSize": 3,
+      "roomState": "finished",
+      "workers": [],
+      "_id": {
+        "$oid": "64a7b92f2c0895d47b2902b8"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 354.3023255813953,
+      "y": 257.6865671641789,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a7b92f2c0895d47b2902ae"
+      }
+    },
+    {
+      "x": 156.9601328903655,
+      "y": 258.681592039802,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a7b92f2c0895d47b2902af"
+      }
+    },
+    {
+      "x": 256.62790697674427,
+      "y": 133.3084577114428,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a7b92f2c0895d47b2902b0"
+      }
+    },
+    {
+      "x": 294.50166112956805,
+      "y": 160.17412935323384,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a7b92f2c0895d47b2902b1"
+      }
+    },
+    {
+      "x": 55.29900332225915,
+      "y": 180.07462686567212,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a7b92f2c0895d47b2902b2"
+      }
+    },
+    {
+      "x": 256.62790697674416,
+      "y": 172.11442786069657,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a7b92f2c0895d47b2902b3"
+      }
+    },
+    {
+      "x": 456.9601328903654,
+      "y": 175.0995024875622,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a7b92f2c0895d47b2902b4"
+      }
+    },
+    {
+      "x": 253.63787375415282,
+      "y": 221.86567164179132,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a7b92f2c0895d47b2902b5"
+      }
+    },
+    {
+      "x": 253.63787375415282,
+      "y": 97.48756218905473,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a7b92f2c0895d47b2902b6"
+      }
+    }
+  ],
+  "beingCreated": true,
+  "__v": 5,
+  "activelyWorkedOn": true
+},
+{
+  "_id": {
+    "$oid": "64a82329f28502b203f1da35"
+  },
+  "user": "zika",
+  "type": "apartment",
+  "address": "Spanskih boraca 32A",
+  "area": 299,
+  "roomNum": 3,
+  "rooms": [
+    {
+      "x": 29.2333984375,
+      "y": 28.816650390625,
+      "width": 200,
+      "height": 200,
+      "borderSize": 3,
+      "roomState": "not started",
+      "workers": [],
+      "_id": {
+        "$oid": "64a82329f28502b203f1da36"
+      }
+    },
+    {
+      "x": 231.25,
+      "y": 81.18687748136797,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "roomState": "not started",
+      "workers": [],
+      "_id": {
+        "$oid": "64a82329f28502b203f1da37"
+      }
+    },
+    {
+      "x": 286.6071428571429,
+      "y": 182.82370968865362,
+      "width": 200,
+      "height": 100,
+      "borderSize": 3,
+      "roomState": "not started",
+      "workers": [],
+      "_id": {
+        "$oid": "64a82329f28502b203f1da38"
+      }
+    }
+  ],
+  "doors": [
+    {
+      "x": 45,
+      "y": 25,
+      "width": 30,
+      "height": 8,
+      "_id": {
+        "$oid": "64a82329f28502b203f1da39"
+      }
+    },
+    {
+      "x": 336.9642857142857,
+      "y": 176.04060736922756,
+      "width": 30,
+      "height": 10,
+      "_id": {
+        "$oid": "64a82329f28502b203f1da3a"
+      }
+    },
+    {
+      "x": 223.57142857142858,
+      "y": 147.51097025841054,
+      "width": 10,
+      "height": 30,
+      "_id": {
+        "$oid": "64a82329f28502b203f1da3b"
+      }
+    }
+  ],
+  "beingCreated": false,
+  "__v": 7,
+  "activelyWorkedOn": true
+}]

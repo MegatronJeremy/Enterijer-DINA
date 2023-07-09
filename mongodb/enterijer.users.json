@@ -1,0 +1,199 @@
+[{
+  "_id": {
+    "$oid": "6499e4c4da7ae1dd02fe832e"
+  },
+  "username": "paja",
+  "password": "$2a$10$G.s70vuoTVU5R8LML0VY4Ok3VKUWkKc0LbMh0dncgL1J8izv8BfAW",
+  "email": "paja@etf.rs",
+  "phone": "+381616165636",
+  "userType": "admin",
+  "__v": 0,
+  "registered": true,
+  "profilePicture": "uploads\\default-profile-picture.jpg"
+},
+{
+  "_id": {
+    "$oid": "6499f9e8b924c5753f40b3ff"
+  },
+  "username": "parhy",
+  "password": "$2a$10$OSoRLD/zWxqm4XoXUuuAEeqe75JSa0jCrUPfJ4fEd7RoECre5IUZS",
+  "email": "xparhyx@gmail.com",
+  "phone": "+381616165636",
+  "clientInfo": {
+    "firstName": "Vuk",
+    "lastName": "Djordjevic"
+  },
+  "userType": "client",
+  "__v": 0,
+  "registered": true,
+  "resetToken": {
+    "token": "GQrRARjbgpwVQW9ErftL0361xcRodqpH3WcKGzaF",
+    "expires": {
+      "$numberLong": "1688297087148"
+    }
+  },
+  "profilePicture": "uploads\\default-profile-picture.jpg"
+},
+{
+  "_id": {
+    "$oid": "649b2c4d317000da26bd2354"
+  },
+  "username": "zika",
+  "password": "$2a$10$4bZfUHjyQU1bpu0mcVIcp.D8L3HHGRLRmnSZT5ywufPL2JuZVTdUC",
+  "email": "zika@etf.rs",
+  "phone": "+381616165636",
+  "clientInfo": {
+    "firstName": "Zivojin",
+    "lastName": "Zivojinovic"
+  },
+  "userType": "client",
+  "__v": 0,
+  "profilePicture": "uploads\\063a9261-aa7a-40c8-a2f1-cc560538c946-Untitled.jpg",
+  "registered": true,
+  "agencyInfo": {
+    "vacancies": 0,
+    "vacancyRequests": 0
+  }
+},
+{
+  "_id": {
+    "$oid": "649d92d60090e80822cc84e4"
+  },
+  "username": "fica",
+  "password": "$2a$10$cGiZLh7poyBS/jx5QSpeCOqrSeuMH.nb8Ew1s1iHdxReYZmRD50t.",
+  "email": "fica@gmail.com",
+  "phone": "+381616165636",
+  "profilePicture": "uploads\\9c77fda1-bc9d-4774-8695-d424aac42e13-1920px-Lost_main_title.svg.png",
+  "agencyInfo": {
+    "agencyName": "Fica Travel",
+    "country": "Srbija",
+    "city": "Beograd",
+    "street": "Cvetanova Cuprija 107L",
+    "registrationNumber": "0393939",
+    "description": "Vic dva kostura"
+  },
+  "userType": "agency",
+  "registered": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "649dc2380b08c8146a22d462"
+  },
+  "username": "dj",
+  "password": "$2a$10$arf2Dc4ZI9lF80WzLHOME.hEH3Wat8lW/xzT2zbX3rPFdrM3wVl/.",
+  "email": "dj@yandex.ru",
+  "phone": "+387616165636",
+  "profilePicture": "uploads\\6c372689-dff2-4b3c-90ad-5e4aef91c3e5-Colosseum_manga.png",
+  "agencyInfo": {
+    "agencyName": "Loco Agencija",
+    "country": "Bosna i Hercegovina",
+    "city": "Banja Luka",
+    "street": "Marsala Tita 21",
+    "registrationNumber": "23123123",
+    "description": "Dobra agencija verujte mi"
+  },
+  "userType": "agency",
+  "registered": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a11c91eb676bee0dab8c07"
+  },
+  "username": "stefantm",
+  "password": "$2a$10$EWfLYHcADp89eMByGHAEa.rONNQOaZ5d9TA5lpoCmKlwSAVcPEVaa",
+  "email": "stefantm@yandex.ru",
+  "phone": "+381616165636",
+  "profilePicture": "uploads\\d4b999b0-71de-4a07-a711-840a887eab2f-garfield-button-1635802533892.jpg",
+  "clientInfo": {
+    "firstName": "Stefan",
+    "lastName": "Despotovic"
+  },
+  "userType": "client",
+  "registered": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a121e9eb676bee0dab8d52"
+  },
+  "username": "uzice",
+  "password": "$2a$10$GWBDasQrWjj27w72wozUtuWGiVaX6CvFfuCiC8Q6/8Ut.6QuEQFXe",
+  "email": "uzice@gmail.com",
+  "phone": "+381616965636",
+  "profilePicture": "uploads\\2eb2a5ce-dc8a-4bcd-86fd-1cfe9aa714d9-1200px-Uzice_pan.jpg",
+  "agencyInfo": {
+    "agencyName": "Uzice Enterijer",
+    "country": "Srbija",
+    "city": "Uzice",
+    "street": "Vojvode Tita 123",
+    "registrationNumber": "323909",
+    "description": "Komplet lepinje"
+  },
+  "userType": "agency",
+  "registered": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a12335eb676bee0dab8d66"
+  },
+  "username": "filip",
+  "password": "$2a$10$26b8s2cFsmh9tDm8acTevObYmEBw.fSSnf7FxN0S/xBXDSNdVrBPS",
+  "email": "fica@gmail.com",
+  "phone": "+381616195636",
+  "profilePicture": "uploads\\d0cbab86-290a-4117-bb83-fd657c07c8e6-002.jpg",
+  "clientInfo": {
+    "firstName": "Filip",
+    "lastName": "Urosevic"
+  },
+  "userType": "client",
+  "registered": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a8711ad1f7ed5e7d127958"
+  },
+  "username": "mica",
+  "password": "$2a$10$BakgHktipYrDrRp/5TsZGOvlqcPH.ryhiqGv2WMDWNBROpEpFIHBG",
+  "email": "mica@etf.rs",
+  "phone": "+381616165636",
+  "profilePicture": "uploads\\default-profile-picture.jpg",
+  "clientInfo": {
+    "firstName": "Milos ",
+    "lastName": "Milakovic"
+  },
+  "agencyInfo": {
+    "vacancies": 0,
+    "vacancyRequests": 0
+  },
+  "userType": "client",
+  "registered": false,
+  "__v": 0,
+  "deleted": true
+},
+{
+  "_id": {
+    "$oid": "64aa6e4c3b05e3d0d03aec4a"
+  },
+  "username": "sale",
+  "password": "$2a$10$a.jqPQLQ./R5g3.2CxGLWevQGuFPaf5eqzveDd/0qf.xUox00ggXa",
+  "email": "sale@yahoo.com",
+  "phone": "+381656665555",
+  "profilePicture": "uploads\\dd9bd5d2-0b21-4862-beb7-342eecc5dec5-komplet-lepinja-300x300.jpg",
+  "agencyInfo": {
+    "agencyName": "Sale Moleraj",
+    "country": "Srbija",
+    "city": "Uzice",
+    "street": "Mike Mikic 37",
+    "registrationNumber": "332543",
+    "description": "Najbolji moleraj sa ove strane granice",
+    "vacancies": 0,
+    "vacancyRequests": 0
+  },
+  "userType": "agency",
+  "registered": true,
+  "__v": 0
+}]

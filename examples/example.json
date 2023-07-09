@@ -1,0 +1,24 @@
+{
+  "user": "zika",
+  "type": "apartment",
+  "address": "Spanskih boraca 32A",
+  "area": "29",
+  "roomNum": 1,
+  "doors": [
+    {
+      "x": 45,
+      "y": 25,
+      "width": 30,
+      "height": 8
+    }
+  ],
+  "rooms": [
+    {
+      "x": 29.2333984375,
+      "y": 28.816650390625,
+      "width": 200,
+      "height": 200,
+      "borderSize": 3
+    }
+  ]
+}

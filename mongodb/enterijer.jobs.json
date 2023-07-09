@@ -1,0 +1,120 @@
+[{
+  "_id": {
+    "$oid": "64a1bfc8012f67f415921107"
+  },
+  "startDate": {
+    "$date": "2023-07-05T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2023-07-19T00:00:00.000Z"
+  },
+  "status": "created",
+  "roomState": [],
+  "__v": 0,
+  "agency": "64a121e9eb676bee0dab8d52",
+  "client": "649b2c4d317000da26bd2354",
+  "object": "64a1bf7ce0c60735e1e2de53"
+},
+{
+  "_id": {
+    "$oid": "64a1c25f52d77de53052f363"
+  },
+  "object": "64a1c25052d77de53052f2ba",
+  "agency": "649d92d60090e80822cc84e4",
+  "client": "649b2c4d317000da26bd2354",
+  "startDate": {
+    "$date": "2023-07-04T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2023-07-12T00:00:00.000Z"
+  },
+  "status": "completed",
+  "roomState": [],
+  "__v": 0,
+  "payOffer": 32000
+},
+{
+  "_id": {
+    "$oid": "64a7e23bb3a912d9ce287d66"
+  },
+  "object": "64a1c25052d77de53052f2ba",
+  "agency": "649d92d60090e80822cc84e4",
+  "client": "649b2c4d317000da26bd2354",
+  "startDate": {
+    "$date": "2023-07-12T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2023-07-24T00:00:00.000Z"
+  },
+  "status": "completed",
+  "__v": 0,
+  "payOffer": 9013
+},
+{
+  "_id": {
+    "$oid": "64a82335f28502b203f1dae6"
+  },
+  "object": "64a82329f28502b203f1da35",
+  "agency": "649d92d60090e80822cc84e4",
+  "client": "649b2c4d317000da26bd2354",
+  "startDate": {
+    "$date": "2023-07-13T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2023-07-23T00:00:00.000Z"
+  },
+  "status": "completed",
+  "__v": 0,
+  "payOffer": 45000
+},
+{
+  "_id": {
+    "$oid": "64a8722e75980f4cc9f348d0"
+  },
+  "object": "64a1c25052d77de53052f2ba",
+  "agency": "64a121e9eb676bee0dab8d52",
+  "client": "649b2c4d317000da26bd2354",
+  "startDate": {
+    "$date": "2023-07-11T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2023-07-24T00:00:00.000Z"
+  },
+  "status": "completed",
+  "__v": 0,
+  "payOffer": 32000
+},
+{
+  "_id": {
+    "$oid": "64aac260ac4357d0537ab528"
+  },
+  "object": "64a12166eb676bee0dab8d13",
+  "agency": "64aa6e4c3b05e3d0d03aec4a",
+  "client": "64a11c91eb676bee0dab8c07",
+  "startDate": {
+    "$date": "2023-07-10T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2023-07-17T00:00:00.000Z"
+  },
+  "status": "completed",
+  "__v": 0,
+  "payOffer": 12000
+},
+{
+  "_id": {
+    "$oid": "64aacd55ac4357d0537abde6"
+  },
+  "object": "64a11fb4eb676bee0dab8c44",
+  "agency": "64aa6e4c3b05e3d0d03aec4a",
+  "client": "64a11c91eb676bee0dab8c07",
+  "startDate": {
+    "$date": "2023-07-11T00:00:00.000Z"
+  },
+  "endDate": {
+    "$date": "2023-07-17T00:00:00.000Z"
+  },
+  "status": "completed",
+  "__v": 0,
+  "payOffer": 65567
+}]

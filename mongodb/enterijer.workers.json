@@ -1,0 +1,103 @@
+[{
+  "_id": {
+    "$oid": "64a7ba7262e5195996cb3aab"
+  },
+  "agency": "649d92d60090e80822cc84e4",
+  "email": "kelebic@etf.rs",
+  "firstName": "Mihailo",
+  "lastName": "Kelebarda",
+  "phone": "+381616165636",
+  "specialty": "Elektronika sporeta",
+  "working": false
+},
+{
+  "_id": {
+    "$oid": "64a7c8957763e3c31549fb81"
+  },
+  "firstName": "Mihailo",
+  "lastName": "Bisenic",
+  "email": "biske@etf.rs",
+  "phone": "+381616667777",
+  "specialty": "Projektovanje lasera",
+  "working": false,
+  "agency": "649d92d60090e80822cc84e4",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a873d775980f4cc9f34a95"
+  },
+  "firstName": "Petar",
+  "lastName": "Petrovic",
+  "email": "vladika@etf.rs",
+  "phone": "+381646365636",
+  "specialty": "Vladika",
+  "working": false,
+  "agency": "64a121e9eb676bee0dab8d52",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64aa67193b05e3d0d03aebbb"
+  },
+  "firstName": "Danilo",
+  "lastName": "Sucur",
+  "email": "danilo@etf.rs",
+  "phone": "+381675755757",
+  "specialty": "Moler",
+  "working": false,
+  "agency": "64a121e9eb676bee0dab8d52",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64aa6cc73b05e3d0d03aec18"
+  },
+  "firstName": "Mihajilo",
+  "lastName": "Keleberda",
+  "email": "mike@etf.rs",
+  "phone": "+381616666666",
+  "specialty": "Lov na veverice",
+  "working": false,
+  "agency": "649d92d60090e80822cc84e4",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64aac339ac4357d0537ab70d"
+  },
+  "firstName": "Mirko",
+  "lastName": "Mirkovic",
+  "email": "mirko@etf.rs",
+  "phone": "+387616161619",
+  "specialty": "Moler",
+  "working": false,
+  "agency": "64aa6e4c3b05e3d0d03aec4a",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64aac389ac4357d0537ab714"
+  },
+  "firstName": "Marko",
+  "lastName": "Markovic",
+  "email": "marko@etf.rs",
+  "phone": "+382616616161",
+  "specialty": "Keramicar",
+  "working": false,
+  "agency": "64aa6e4c3b05e3d0d03aec4a",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64aacdf7ac4357d0537ac019"
+  },
+  "firstName": "Mirko",
+  "lastName": "Krstic",
+  "email": "mirkec@etf.rs",
+  "phone": "+382616616161",
+  "specialty": "Fasada",
+  "working": false,
+  "agency": "64aa6e4c3b05e3d0d03aec4a",
+  "__v": 0
+}]

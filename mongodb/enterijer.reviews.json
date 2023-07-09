@@ -1,0 +1,49 @@
+[{
+  "_id": {
+    "$oid": "64a1649202c58c9f6fbf9fb3"
+  },
+  "text": "Ok je sta znam",
+  "rating": 3,
+  "date": "2020-20-03T03:32:00Z",
+  "client": "filip",
+  "agency": "fica"
+},
+{
+  "_id": {
+    "$oid": "64a48324a7d59ce4e0a51856"
+  },
+  "client": "zika",
+  "agency": "fica",
+  "text": "Agencija je 10/10, Fica je najbolji!!!!!111",
+  "rating": 5,
+  "date": {
+    "$date": "2023-07-09T12:57:10.811Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a8741975980f4cc9f34b73"
+  },
+  "client": "zika",
+  "agency": "uzice",
+  "text": "Veoma solidno",
+  "rating": 4,
+  "date": {
+    "$date": "2023-07-07T20:22:49.062Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64aaccf3ac4357d0537abc9e"
+  },
+  "client": "stefantm",
+  "agency": "sale",
+  "text": "Nije lose",
+  "rating": 4,
+  "date": {
+    "$date": "2023-07-09T15:06:27.777Z"
+  },
+  "__v": 0
+}]
