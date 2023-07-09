@@ -1,7 +1,7 @@
 <div class="table-responsive">
   <h2 class="page-header">Zahtevi za registraciju klijenata</h2>
   <table
-    class="table table-hover table-bordered table-striped"
+    class="table table-hover table-bordered align-middle"
     [hidden]="clients.length === 0"
   >
     <thead>
@@ -17,11 +17,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let user of clients">
-        <td>
+        <td class="d-flex justify-content-center">
           <img
             *ngIf="user.profilePicture"
             [src]="'http://localhost:4000/' + user.profilePicture"
-            class="user-picture"
+            class="user-picture img-thumbnail"
           />
         </td>
         <td>{{ user.username }}</td>
@@ -30,16 +30,20 @@
         <td>{{ user.clientInfo?.firstName }}</td>
         <td>{{ user.clientInfo?.lastName }}</td>
         <td>
-          <div class="col mb-3">
-            <button class="btn btn-success" (click)="approveRegistration(user)">
-              Odobri registraciju
+          <span class="d-flex justify-content-between">
+            <button
+              class="btn btn-success btn-lg mx-2 my-auto"
+              (click)="approveRegistration(user)"
+            >
+              <i class="fas fa-check"></i>
             </button>
-          </div>
-          <div class="col mb-3">
-            <button class="btn btn-danger" (click)="denyRegistration(user)">
-              Odbij registraciju
+            <button
+              class="btn btn-danger btn-lg mx-2 my-auto"
+              (click)="denyRegistration(user)"
+            >
+              <i class="fas fa-x"></i>
             </button>
-          </div>
+          </span>
         </td>
       </tr>
     </tbody>
@@ -52,7 +56,7 @@
 <div class="table-responsive">
   <h2 class="page-header">Zahtevi za registraciju agencija</h2>
   <table
-    class="table table-hover table-bordered table-striped"
+    class="table table-hover table-bordered align-middle"
     [hidden]="agencies.length === 0"
   >
     <thead>
@@ -71,11 +75,11 @@
     </thead>
     <tbody>
       <tr *ngFor="let user of agencies">
-        <td>
+        <td class="d-flex justify-content-center">
           <img
             *ngIf="user.profilePicture"
             [src]="'http://localhost:4000/' + user.profilePicture"
-            class="user-picture"
+            class="user-picture img-thumbnail"
           />
         </td>
         <td>{{ user.username }}</td>
@@ -87,16 +91,20 @@
         <td>{{ user.agencyInfo?.registrationNumber }}</td>
         <td>{{ user.agencyInfo?.description }}</td>
         <td>
-          <div class="col mb-3">
-            <button class="btn btn-success" (click)="approveRegistration(user)">
-              Odobri registraciju
+          <span class="d-flex justify-content-between">
+            <button
+              class="btn btn-success btn-lg mx-2 my-auto"
+              (click)="approveRegistration(user)"
+            >
+              <i class="fas fa-check"></i>
             </button>
-          </div>
-          <div class="col mb-3">
-            <button class="btn btn-danger" (click)="denyRegistration(user)">
-              Odbij registraciju
+            <button
+              class="btn btn-danger btn-lg mx-2 my-auto"
+              (click)="denyRegistration(user)"
+            >
+              <i class="fas fa-x"></i>
             </button>
-          </div>
+          </span>
         </td>
       </tr>
     </tbody>

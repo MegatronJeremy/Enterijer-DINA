@@ -151,27 +151,158 @@
       </li>
     </ul>
 
-    <ul class="list-group my-3" *ngIf="jobToCancel">
-      <li class="list-group-item">
-        <span class="d-flex justify-content-between">
-          <label for="cancellation" class="form-label fw-bold my-auto"
-            >Razlog otkazivanja</label
+    <ul *ngIf="assignCondition(selectedObj)" class="list-group my-3">
+      <li class="list-group-item d-flex flex-column">
+        <h2 class="fw-bold my-2">Dodeljivanje radnika</h2>
+      </li>
+      <li class="list-group-item d-flex flex-column">
+        <span *ngIf="minWorkersCondition(selectedObj)">
+          <h4 class="fs-4 my-auto" *ngIf="!canvasComponent?.selectedRoom">
+            Izaberite prostoriju na skici
+          </h4>
+
+          <span
+            class="table-responsive d-flex flex-column"
+            *ngIf="canvasComponent?.selectedRoom"
           >
-          <button
-            class="btn btn-danger btn-lg mb-2"
-            (click)="sendCancellation(jobToCancel)"
-          >
-            Pošalji
-          </button>
+            <h4 class="fs-4 my-3">Izaberite radnika za prostoriju</h4>
+            <table
+              class="table table-hover table-bordered align-middle"
+              *ngIf="workers.length !== 0"
+            >
+              <thead>
+                <tr>
+                  <th>Ime i Prezime</th>
+                  <th>Specijalizacija</th>
+                  <th>Email</th>
+                  <th>Telefon</th>
+                  <th>Dodaj</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let worker of workers">
+                  <td>{{ worker.firstName }} {{ worker.lastName }}</td>
+                  <td>
+                    {{ worker.specialty }}
+                  </td>
+                  <td>
+                    {{ worker.email }}
+                  </td>
+                  <td>
+                    {{ worker.phone }}
+                  </td>
+                  <td>
+                    <span class="d-flex justify-content-start">
+                      <button
+                        class="btn btn-success mx-auto"
+                        (click)="assignWorker(worker)"
+                      >
+                        <i class="fas fa-check"></i>
+                      </button>
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </span>
         </span>
-        <textarea
-          class="form-control"
-          rows="3"
-          id="cancellationReason"
-          [(ngModel)]="cancellationReason"
-          name="cancellationReason"
-          placeholder="Unesite razlog otkazivanja"
-        ></textarea>
+        <span *ngIf="!minWorkersCondition(selectedObj)">
+          <h4 class="fs-4 my-auto">Nemate dovoljno radnika za ovaj objekat</h4>
+        </span>
+      </li>
+    </ul>
+    <ul *ngIf="showAssignedCondition()" class="list-group my-3">
+      <li class="list-group-item d-flex flex-column">
+        <h2 class="fw-bold my-2">Dodeljeni radnici</h2>
+      </li>
+      <li class="list-group-item d-flex flex-column">
+        <h4 class="fs-4 my-auto" *ngIf="!canvasComponent?.selectedRoom">
+          Izaberite prostoriju na skici
+        </h4>
+
+        <span
+          class="table-responsive d-flex flex-column"
+          *ngIf="canvasComponent?.selectedRoom"
+        >
+          <span
+            *ngIf="
+              canvasComponent?.selectedRoom?.workers &&
+              canvasComponent?.selectedRoom?.workers?.length !== 0
+            "
+          >
+            <h4 class="fs-4 my-3">Radnici koji rade na prostoriji</h4>
+            <table class="table table-hover table-bordered align-middle">
+              <thead>
+                <tr>
+                  <th>Ime i Prezime</th>
+                  <th>Email</th>
+                  <th>Telefon</th>
+                  <th>Specijalizacija</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let worker of canvasComponent?.selectedRoom?.workers"
+                >
+                  <td>{{ worker.firstName }} {{ worker.lastName }}</td>
+                  <td>{{ worker.email }}</td>
+                  <td>{{ worker.phone }}</td>
+                  <td>
+                    {{ worker.specialty }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </span>
+          <h6
+            class="fs-4 my-2"
+            *ngIf="
+              !canvasComponent?.selectedRoom?.workers ||
+              canvasComponent?.selectedRoom?.workers?.length === 0
+            "
+          >
+            Nema radnika koji rade na ovoj prostoriji
+          </h6>
+        </span>
+      </li>
+    </ul>
+    <ul *ngIf="startCondition()" class="list-group my-3">
+      <li class="list-group-item d-flex justify-content-between">
+        <h4 class="fs-4 my-auto">Započnite poslove?</h4>
+        <button class="btn btn-success btn-lg my-auto" (click)="startWork()">
+          <i class="fas fa-check"></i>
+        </button>
+      </li>
+    </ul>
+    <ul *ngIf="workedOnCondition()" class="list-group my-3">
+      <li class="list-group-item d-flex flex-column">
+        <h2 class="fw-bold my-2">Napredak prostorija</h2>
+      </li>
+      <li *ngIf="!canvasComponent?.selectedRoom" class="list-group-item d-flex">
+        <h4 class="fs-4 my-auto" *ngIf="!canvasComponent?.selectedRoom">
+          Izaberite prostoriju na skici
+        </h4>
+      </li>
+      <li
+        *ngIf="
+          canvasComponent?.selectedRoom &&
+          canvasComponent?.selectedRoom?.roomState === 'working'
+        "
+        class="list-group-item d-flex justify-content-between"
+      >
+        <h4 class="fs-4">Završite prostoriju?</h4>
+        <button class="btn btn-success btn-lg" (click)="endWork()">
+          <i class="fas fa-check"></i>
+        </button>
+      </li>
+      <li
+        *ngIf="
+          canvasComponent?.selectedRoom &&
+          canvasComponent?.selectedRoom?.roomState === 'finished'
+        "
+        class="list-group-item d-flex"
+      >
+        <h4 class="fs-4">Prostorija završena</h4>
       </li>
     </ul>
   </div>
@@ -181,8 +312,10 @@
   >
     <h2 class="fw-bold">Skica objekta</h2>
     <app-object-canvas
+      #canvas
       [canvasObject]="selectedObj"
       [hideForm]="true"
+      [modeRoomSelect]="true"
     ></app-object-canvas>
   </div>
 </div>

@@ -10,6 +10,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class UnregisteredComponent implements OnInit {
   constructor(public authService: AuthService) {}
 
+  User = User;
+
   agencies: User[] = [];
 
   searchName: string = '';

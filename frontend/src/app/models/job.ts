@@ -11,4 +11,21 @@ export default class Job {
   agency?: User;
   payOffer?: number;
   cancellationReason?: string;
+
+  static getJobStatus(job: Job) {
+    switch (job.status) {
+      case 'created':
+        return 'Napravljen';
+      case 'rejected':
+        return 'Odbijen';
+      case 'pending':
+        return 'Na čekanju';
+      case 'active':
+        return 'Aktivan';
+      case 'completed':
+        return 'Završen';
+      default:
+        return 'Nepoznato';
+    }
+  }
 }

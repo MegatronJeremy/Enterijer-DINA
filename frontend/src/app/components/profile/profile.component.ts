@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import User from 'src/app/models/user';
@@ -11,8 +11,11 @@ import { ValidateService } from 'src/app/services/validate.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  user?: User;
+  @Input() user?: User;
+  @Input() inputMode: boolean = false;
   selectedFile?: File;
+
+  User = User;
 
   constructor(
     private authService: AuthService,
@@ -21,6 +24,9 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (this.inputMode) {
+      return;
+    }
     this.authService.getProfile().subscribe({
       next: (profile: any) => (this.user = profile.user),
       error: (err: any) => console.log(err),

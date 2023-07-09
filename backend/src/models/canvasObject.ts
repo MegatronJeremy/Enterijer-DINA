@@ -19,6 +19,7 @@ const CanvasObjectSchema = new mongoose.Schema({
         default: "not started",
         required: true,
       },
+      workers: { type: [Object], required: false },
     },
   ],
   doors: [
@@ -30,6 +31,7 @@ const CanvasObjectSchema = new mongoose.Schema({
     },
   ],
   beingCreated: { type: Boolean, required: true, default: false },
+  activelyWorkedOn: { type: Boolean, required: false, default: false },
 });
 
 const CanvasObject = mongoose.model(

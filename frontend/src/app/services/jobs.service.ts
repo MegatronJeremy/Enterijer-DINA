@@ -27,8 +27,10 @@ export class JobsService {
   }
 
   finishJob(job: Job) {
+    job.cancellationReason = undefined;
     job.status = 'completed';
     job.object!.beingCreated = false;
+    job.object!.activelyWorkedOn = false;
     job.object!.rooms.map((room) => {
       room.roomState = 'not started';
     });

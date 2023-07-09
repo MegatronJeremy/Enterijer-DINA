@@ -1,0 +1,112 @@
+<h2 class="text-center my-5 fw-bold">Pregled svih poslova</h2>
+<div class="table-responsive d-flex justify-content-start">
+  <table
+    class="table table-hover table-bordered align-middle"
+    *ngIf="jobs.length !== 0"
+  >
+    <thead>
+      <tr>
+        <th>Klijent</th>
+        <th>Agencija</th>
+        <th>Datum početka</th>
+        <th>Datum kraja</th>
+        <th>Tip</th>
+        <th>Adresa</th>
+        <th>Broj prostorija</th>
+        <th>Kvadratura</th>
+
+        <th>Status</th>
+        <th>Akcija</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let job of jobs">
+        <td>
+          {{ job.client?.clientInfo?.firstName }}
+          {{ job.client?.clientInfo?.lastName }}
+        </td>
+        <td>
+          {{ job.agency?.agencyInfo?.agencyName }}
+        </td>
+        <td>
+          {{ job.startDate | date : "yyyy-MM-dd" }}
+        </td>
+        <td>
+          {{ job.endDate | date : "yyyy-MM-dd" }}
+        </td>
+        <td>
+          {{ job.object?.type === "house" ? "Kuća" : "Stan" }}
+        </td>
+        <td>
+          {{ job.object?.address }}
+        </td>
+        <td>
+          {{ job.object?.roomNum }}
+        </td>
+        <td>{{ job.object?.area }} m<sup>2</sup></td>
+        <td>{{ Job.getJobStatus(job) }}</td>
+        <td>
+          <span class="d-flex justify-content-evenly">
+            <span class="mx-2" *ngIf="!job.cancellationReason">
+              <input
+                type="radio"
+                name="btncheck2"
+                class="btn-check"
+                [id]="'btncheck2' + job._id"
+                [checked]="selectedObj === job.object"
+                (click)="onClickSelect(job.object)"
+              />
+              <label class="btn btn-info mx-auto" [for]="'btncheck2' + job._id"
+                ><i class="fas fa-eye"></i
+              ></label>
+            </span>
+            <span class="mx-2" *ngIf="job.cancellationReason">
+              <input
+                type="radio"
+                name="btncheck1"
+                class="btn-check"
+                [id]="'btncheck1' + job._id"
+                [checked]="jobToCancel === job"
+                (click)="selectToCancel(job)"
+              />
+              <label
+                class="btn btn-danger mx-auto"
+                [for]="'btncheck1' + job._id"
+                ><i class="fas fa-eye"></i
+              ></label>
+            </span>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="d-lg-flex justify-content-evenly">
+  <div
+    *ngIf="selectedObj"
+    class="canvas-container d-flex flex-column mx-3 my-3"
+  >
+    <h2 class="fw-bold">Skica objekta</h2>
+    <app-object-canvas
+      #canvas
+      [canvasObject]="selectedObj"
+      [hideForm]="true"
+    ></app-object-canvas>
+  </div>
+  <ul *ngIf="jobToCancel" class="list-group my-3">
+    <li class="list-group-item d-flex flex-column">
+      <h2 class="fw-bold my-2">Razlog otkazivanja</h2>
+    </li>
+    <li class="list-group-item d-flex">
+      <span class="my-auto">{{ jobToCancel.cancellationReason }}</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between">
+      <button class="btn btn-success btn-lg" (click)="acceptCancellation()">
+        <i class="far fa-solid fa-check"></i> Odobri
+      </button>
+      <button class="btn btn-danger btn-lg" (click)="rejectCancellation()">
+        <i class="far fa-solid fa-x"></i> Odbij
+      </button>
+    </li>
+  </ul>
+</div>

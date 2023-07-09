@@ -159,12 +159,11 @@ export class JobComponent implements OnInit {
   }
 
   cancelCondition(job: Job): boolean {
-    return job.status === 'active';
+    return job.status === 'active' && !this.finishedCondition(job);
   }
 
   finishedCondition(job: Job): boolean {
     return (
-      job.cancellationReason === undefined &&
       job.status === 'active' &&
       job.object !== undefined &&
       job.object?.rooms.every((room) => room.roomState === 'finished')

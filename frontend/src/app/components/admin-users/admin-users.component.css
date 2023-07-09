@@ -21,18 +21,3 @@ h4 {
   margin-bottom: 20px;
 }
 
-.sort-icon {
-  margin-left: 5px;
-}
-
-.fa-sort-asc:before {
-  content: '\f0de';
-}
-
-.fa-sort-desc:before {
-  content: '\f0dd';
-}
-
-.fa {
-  font-family: FontAwesome;
-}

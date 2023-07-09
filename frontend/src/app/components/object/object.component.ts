@@ -1,9 +1,9 @@
 import {
+  AfterViewInit,
   Component,
   ElementRef,
   HostListener,
   Input,
-  OnInit,
   ViewChild,
 } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
@@ -15,12 +15,13 @@ import { CanvasValidateService } from 'src/app/services/canvas-validate.service'
   templateUrl: './object.component.html',
   styleUrls: ['./object.component.css'],
 })
-export class ObjectComponent implements OnInit {
+export class ObjectComponent implements AfterViewInit {
   @ViewChild('canvas', { static: true })
   canvasRef!: ElementRef<HTMLCanvasElement>;
 
   private _canvasObject: CanvasObject | undefined;
   _hideForm: boolean = false;
+  _modeRoomSelect: boolean = false;
 
   private ctx?: CanvasRenderingContext2D;
 
@@ -37,7 +38,7 @@ export class ObjectComponent implements OnInit {
   CANVAS_HEIGHT: number = 400;
   MAX_DOOR_WIDTH: number = 30;
 
-  selectedRoomIndex: number = -1;
+  selectedRoom?: Room;
   selectedDoor?: Door;
   newRoomWidth: number = 200;
   newRoomHeight: number = 100;
@@ -45,7 +46,7 @@ export class ObjectComponent implements OnInit {
   modeAddDoor: boolean = false;
 
   private reset() {
-    this.selectedRoomIndex = -1;
+    this.selectedRoom = undefined;
     this.selectedDoor = undefined;
     this.newRoomWidth = 200;
     this.newRoomHeight = 100;
@@ -82,6 +83,10 @@ export class ObjectComponent implements OnInit {
     this._hideForm = value;
   }
 
+  @Input() set modeRoomSelect(value: boolean) {
+    this._modeRoomSelect = value;
+  }
+
   get hideForm(): boolean {
     return this._hideForm;
   }
@@ -91,7 +96,7 @@ export class ObjectComponent implements OnInit {
     private canvasValidateService: CanvasValidateService
   ) {}
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     const canvas = this.canvasRef.nativeElement;
     this.ctx = canvas.getContext('2d')!;
 
@@ -110,15 +115,17 @@ export class ObjectComponent implements OnInit {
     }
 
     const object: CanvasObject = this._canvasObject;
-    if (this.selectedRoomIndex !== -1) {
-      const room = object.rooms[this.selectedRoomIndex];
+    if (this.selectedRoom !== undefined) {
+      const room: Room = this.selectedRoom!;
 
       object.doors = object.doors.filter((door: Door) => {
         return !this.canvasValidateService.doorOnBorder(room, door);
       });
 
-      object.rooms.splice(this.selectedRoomIndex, 1);
-      this.selectedRoomIndex = -1;
+      object.rooms = object.rooms.filter((r: Room) => {
+        return r !== room;
+      });
+      this.selectedRoom = undefined;
     }
     if (this.selectedDoor) {
       object.doors = object.doors.filter((door: Door) => {
@@ -136,7 +143,7 @@ export class ObjectComponent implements OnInit {
   @HostListener('tap', ['$event'])
   @HostListener('click', ['$event'])
   onClick(event: any) {
-    if (!this._canvasObject || this.hideForm) {
+    if (!this._canvasObject || (this.hideForm && !this._modeRoomSelect)) {
       return;
     }
 
@@ -171,20 +178,25 @@ export class ObjectComponent implements OnInit {
       return;
     }
 
-    if (this.modeAddRoom) {
-      // add a new room
-      this.addRoom(x, y, object);
-      this.modeAddRoom = false;
-    } else if (this.modeAddDoor) {
-      // add a new door (if able to validate)
-      this.addDoor(x, y, object);
-      this.modeAddDoor = false;
-    } else {
-      // Check if the click is inside a room
+    if (this.modeRoomSelect) {
+      // special mode
       this.selectRoom(x, y, object);
+    } else {
+      if (this.modeAddRoom) {
+        // add a new room
+        this.addRoom(x, y, object);
+        this.modeAddRoom = false;
+      } else if (this.modeAddDoor) {
+        // add a new door (if able to validate)
+        this.addDoor(x, y, object);
+        this.modeAddDoor = false;
+      } else {
+        // Check if the click is inside a room
+        this.selectRoom(x, y, object);
 
-      // Check if the click is inside a door
-      this.selectDoor(x, y, object);
+        // Check if the click is inside a door
+        this.selectDoor(x, y, object);
+      }
     }
 
     this.drawObject();
@@ -340,7 +352,7 @@ export class ObjectComponent implements OnInit {
     this.isDragging = false;
     this.draggedRoomIndex = -1;
     this.draggedDoors = new Set<Door>();
-    this.selectedRoomIndex = -1;
+    this.selectedRoom = undefined;
     this.drawObject();
   }
 
@@ -368,47 +380,47 @@ export class ObjectComponent implements OnInit {
     let object = this._canvasObject;
 
     // Draw the rooms
-    for (let i = 0; i < object.rooms.length; i++) {
-      if (i === this.selectedRoomIndex) {
+    for (let room of object.rooms) {
+      if (room === this.selectedRoom) {
         continue;
       }
-      this.drawRoom(i);
+      this.drawRoom(room);
     }
 
     // Draw doors on top
-    for (let i = 0; i < object.rooms.length; i++) {
-      if (i === this.selectedRoomIndex) {
+    for (let room of object.rooms) {
+      if (room === this.selectedRoom) {
         continue;
       }
-      this.drawDoors(i);
+      this.drawDoors(room);
     }
-    if (this.selectedRoomIndex !== -1) {
-      this.drawRoom(this.selectedRoomIndex);
-      this.drawDoors(this.selectedRoomIndex);
+
+    if (this.selectedRoom !== undefined) {
+      this.drawRoom(this.selectedRoom);
+      this.drawDoors(this.selectedRoom);
     }
   }
 
-  drawRoom(roomIndex: number) {
+  drawRoom(room: Room) {
     if (!this._canvasObject || !this.ctx) {
       return;
     }
 
     let object = this._canvasObject;
 
-    const room = object.rooms[roomIndex];
     this.ctx.strokeStyle = 'gray';
     this.ctx.lineWidth = room.borderSize;
     this.ctx.strokeRect(room.x, room.y, room.width, room.height);
 
     switch (room.roomState) {
       case 'working':
-        this.ctx.fillStyle = 'crimson';
+        this.ctx.fillStyle = '#FF8A8A';
         break;
       case 'finished':
         this.ctx.fillStyle = 'lightgreen';
         break;
       case 'invalid':
-        this.ctx.fillStyle = 'banana';
+        this.ctx.fillStyle = '#FFFF9F';
         break;
       default:
         this.ctx.fillStyle = 'white';
@@ -416,20 +428,18 @@ export class ObjectComponent implements OnInit {
     }
     this.ctx.fillRect(room.x, room.y, room.width, room.height);
 
-    if (roomIndex === this.selectedRoomIndex) {
+    if (room === this.selectedRoom) {
       this.ctx.fillStyle = 'skyblue';
       this.ctx.fillRect(room.x, room.y, room.width, room.height);
     }
   }
 
-  drawDoors(roomIndex: number) {
+  drawDoors(room: Room) {
     if (!this._canvasObject || !this.ctx) {
       return;
     }
 
     let object = this._canvasObject;
-
-    const room = object.rooms[roomIndex];
 
     // Draw the doors in each room
     if (!room.doors) {
@@ -460,11 +470,11 @@ export class ObjectComponent implements OnInit {
         y <= room.y + room.height
       ) {
         this.selectedDoor = undefined;
-        this.selectedRoomIndex = i;
+        this.selectedRoom = room;
         return;
       }
     }
-    this.selectedRoomIndex = -1;
+    this.selectedRoom = undefined;
   }
 
   private selectDoor(x: number, y: number, object: CanvasObject) {
@@ -476,7 +486,7 @@ export class ObjectComponent implements OnInit {
         y >= door.y &&
         y <= door.y + door.height
       ) {
-        this.selectedRoomIndex = -1;
+        this.selectedRoom = undefined;
         this.selectedDoor = door;
         return;
       }
@@ -501,7 +511,7 @@ export class ObjectComponent implements OnInit {
     room.height = this.newRoomHeight;
 
     this.selectedDoor = undefined;
-    this.selectedRoomIndex = -1;
+    this.selectedRoom = undefined;
 
     object.rooms.push(room);
   }
@@ -534,7 +544,7 @@ export class ObjectComponent implements OnInit {
     }
 
     this.selectedDoor = undefined;
-    this.selectedRoomIndex = -1;
+    this.selectedRoom = undefined;
 
     object.doors.push(door);
   }

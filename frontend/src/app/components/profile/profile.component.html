@@ -19,10 +19,7 @@
         <li class="list-group-item">
           Naziv agencije: {{ user.agencyInfo?.agencyName }}
         </li>
-        <li class="list-group-item">
-          Adresa: {{ user.agencyInfo?.country }}, {{ user.agencyInfo?.city }},
-          {{ user.agencyInfo?.street }}
-        </li>
+        <li class="list-group-item">Adresa: {{ User.agencyAddress(user) }}</li>
         <li class="list-group-item">
           Opis: {{ user.agencyInfo?.description }}
         </li>
@@ -175,7 +172,7 @@
         <label
           for="profilePicture"
           class="form-label"
-          [hidden]="user.userType !== 'client'"
+          [hidden]="user.userType === 'agency'"
         >
           Profilna Slika:
         </label>

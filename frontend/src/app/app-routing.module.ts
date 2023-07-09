@@ -18,6 +18,8 @@ import { JobComponent } from './components/job/job.component';
 import { SubmitJobComponent } from './components/submit-job/submit-job.component';
 import { WorkersComponent } from './components/workers/workers.component';
 import { AgencyJobsComponent } from './components/agency-jobs/agency-jobs.component';
+import { AdminUsersComponent } from './components/admin-users/admin-users.component';
+import { AdminJobsComponent } from './components/admin-jobs/admin-jobs.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -116,6 +118,18 @@ const routes: Routes = [
     component: WorkersComponent,
     canActivate: [AuthGuard],
     data: { userType: ['agency'] },
+  },
+  {
+    path: 'admin-users',
+    component: AdminUsersComponent,
+    canActivate: [AuthGuard],
+    data: { userType: ['admin'] },
+  },
+  {
+    path: 'admin-jobs',
+    component: AdminJobsComponent,
+    canActivate: [AuthGuard],
+    data: { userType: ['admin'] },
   },
 
   { path: '**', redirectTo: '' }, // Default route

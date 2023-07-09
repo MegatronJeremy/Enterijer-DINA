@@ -41,6 +41,25 @@
             >Zahtevi</a
           >
         </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/admin-users']"
+            *ngIf="authService.getUserType() === 'admin'"
+            >Korisnici</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/admin-jobs']"
+            *ngIf="authService.getUserType() === 'admin'"
+            >Poslovi</a
+          >
+        </li>
+
         <li class="nav-item">
           <a
             class="nav-link"

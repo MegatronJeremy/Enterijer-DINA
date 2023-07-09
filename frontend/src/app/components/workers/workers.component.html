@@ -1,6 +1,11 @@
 <h2 class="text-center my-5 fw-bold">Pregled radnika</h2>
-<div class="table-responsive d-flex justify-content-start">
-  <h4 *ngIf="workers.length === 0">Trenutno nemate radnika</h4>
+<div class="table-responsive d-flex justify-content-center">
+  <h4 *ngIf="workers.length === 0 && inputMode === false">
+    Trenutno nemate radnika
+  </h4>
+  <h4 *ngIf="workers.length === 0 && inputMode === true">
+    Agencija trenutno nema radnika
+  </h4>
   <table
     class="table table-hover table-bordered align-middle"
     *ngIf="workers.length !== 0"
@@ -12,6 +17,7 @@
         <th>Email</th>
         <th>Telefon</th>
         <th>Specijalizacija</th>
+        <th>Status</th>
         <th>Akcija</th>
       </tr>
     </thead>
@@ -58,6 +64,14 @@
           />
         </td>
         <td>
+          <span
+            class="badge rounded-pill bg-{{
+              worker.working ? 'success' : 'danger'
+            }}"
+            >{{ worker.working ? "Radi" : "Ne radi" }}</span
+          >
+        </td>
+        <td>
           <span class="d-flex justify-content-start">
             <input
               type="radio"
@@ -74,7 +88,9 @@
             <button
               class="btn btn-danger mx-auto"
               (click)="onClickDelete(worker)"
-              [disabled]="workerToEdit && workerToEdit !== worker"
+              [disabled]="
+                (workerToEdit && workerToEdit !== worker) || worker.working
+              "
             >
               <i class="far fa-trash-alt"></i>
             </button>
@@ -88,7 +104,7 @@
 <form
   (submit)="submitVacancyRequest()"
   class="d-flex justify-content-center my-3"
-  *ngIf="vacancy.vacancies === 0"
+  *ngIf="vacancy.vacancies === 0 && !inputMode"
 >
   <div class="d-flex flex-column">
     <label for="vacancies" class="form-label"
@@ -109,7 +125,46 @@
   </button>
 </form>
 
+<div
+  class="d-flex justify-content-center my-3"
+  *ngIf="vacancy.vacanciesRequested !== 0 && !inputMode"
+>
+  <ul class="list-group">
+    <li class="d-flex justify-content-between list-group-item">
+      <span class="fw-bold my-auto"
+        >Broj radnih mesta koja se razmatraju za otvaranje:
+        {{ vacancy.vacanciesRequested }}</span
+      >
+    </li>
+  </ul>
+</div>
+
+<div
+  class="d-flex justify-content-center my-3"
+  *ngIf="vacancy.vacanciesRequested !== 0 && inputMode"
+>
+  <ul class="list-group">
+    <li class="d-flex justify-content-between list-group-item">
+      <span class="fw-bold my-auto"
+        >Broj zahtevanih radnih mesta za otvaranje:
+        {{ vacancy.vacanciesRequested }}</span
+      >
+      <span>
+        <button class="btn btn-lg btn-success mx-3" (click)="acceptRequest()">
+          <i class="fas fa-check"></i>
+        </button>
+        <button class="btn btn-lg btn-danger" (click)="denyRequest()">
+          <i class="fas fa-x"></i>
+        </button>
+      </span>
+    </li>
+  </ul>
+</div>
+
 <div class="d-flex justify-content-center my-3" *ngIf="vacancy.vacancies !== 0">
+  <span class="my-auto fw-bold mx-3 fs-6">
+    Broj otvorenih radnih mesta: {{ vacancy.vacancies }}
+  </span>
   <button
     class="btn btn-primary mx-3 btn-lg py-3 my-auto"
     [disabled]="workerToAdd"

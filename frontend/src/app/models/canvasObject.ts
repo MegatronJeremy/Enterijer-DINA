@@ -1,3 +1,5 @@
+import Workers from './worker';
+
 export class Door {
   x: number = 0;
   y: number = 0;
@@ -13,6 +15,7 @@ export class Room {
   borderSize: number = 3;
   roomState: string = 'not started';
   doors?: Set<Door> = new Set<Door>();
+  workers?: Workers[] = [];
 }
 
 export default class CanvasObject {
@@ -25,4 +28,5 @@ export default class CanvasObject {
   doors: Door[] = [];
   rooms: Room[] = [];
   beingCreated?: boolean;
+  activelyWorkedOn?: boolean;
 }

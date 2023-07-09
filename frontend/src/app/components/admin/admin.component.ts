@@ -21,10 +21,18 @@ export class AdminComponent implements OnInit {
     this.authService.getAllUsers().subscribe((data: any) => {
       if (data.success) {
         this.agencies = data.users.filter((user: User) => {
-          return user.userType === 'agency' && user.registered == false;
+          return (
+            user.userType === 'agency' &&
+            user.registered == false &&
+            !user.deleted
+          );
         });
         this.clients = data.users.filter((user: User) => {
-          return user.userType === 'client' && user.registered == false;
+          return (
+            user.userType === 'client' &&
+            user.registered == false &&
+            !user.deleted
+          );
         });
       } else {
         this.toastr.error(data.msg);

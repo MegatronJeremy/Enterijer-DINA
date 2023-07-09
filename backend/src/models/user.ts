@@ -25,6 +25,7 @@ export interface IUser extends Document {
     expires: number;
   };
   registered: boolean;
+  deleted?: boolean;
 }
 
 export interface IUserModel extends Model<IUser> {
@@ -97,16 +98,6 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
       type: String,
       required: false,
     },
-    vacancies: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
-    vacancyRequests: {
-      type: Number,
-      required: false,
-      default: 0,
-    },
   },
   userType: {
     type: String,
@@ -125,6 +116,10 @@ const UserSchema: Schema<IUser> = new mongoose.Schema({
   registered: {
     type: Boolean,
     required: true,
+  },
+  deleted: {
+    type: Boolean,
+    required: false,
   },
 });
 

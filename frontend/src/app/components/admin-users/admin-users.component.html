@@ -1,0 +1,102 @@
+<div class="table-responsive">
+  <h2 class="page-header">Pregled korisnika</h2>
+  <table
+    class="table table-hover table-bordered align-middle"
+    [hidden]="users.length === 0"
+  >
+    <thead>
+      <tr>
+        <th>Profilna slika</th>
+        <th>Korisničko ime</th>
+        <th>Telefon</th>
+        <th>Email</th>
+        <th>Tip korisnika</th>
+        <th>Akcija</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td class="d-flex justify-content-center">
+          <img
+            *ngIf="user.profilePicture"
+            [src]="'http://localhost:4000/' + user.profilePicture"
+            class="user-picture img-thumbnail"
+          />
+        </td>
+        <td>
+          <span class="d-flex justify-content-center">
+            {{ user.username }}
+          </span>
+        </td>
+        <td>
+          <span class="d-flex justify-content-center">
+            {{ user.phone }}
+          </span>
+        </td>
+        <td>
+          <span class="d-flex justify-content-center">
+            {{ user.email }}
+          </span>
+        </td>
+        <td>
+          <span class="d-flex justify-content-center">
+            {{ user.userType === "agency" ? "Agencija" : "Klijent" }}
+          </span>
+        </td>
+
+        <td>
+          <span class="d-flex justify-content-between">
+            <input
+              type="radio"
+              name="btncheck"
+              class="btn-check mx-auto"
+              [id]="'btncheck' + user._id"
+              [checked]="userToEdit === user"
+              (click)="selectToEdit(user)"
+            />
+            <label
+              class="btn btn-primary mx-auto"
+              [for]="'btncheck' + user._id"
+            >
+              <i class="fas fa-edit"></i>
+            </label>
+            <button
+              class="btn btn-danger mx-auto"
+              (click)="onClickDelete(user)"
+            >
+              <i class="far fa-trash-alt"></i>
+            </button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h4 [hidden]="users.length !== 0">
+    Ne postoji agencija po zadatom kriterijumu.
+  </h4>
+  <span *ngIf="!userToEdit">
+    <div class="d-flex justify-content-center my-3">
+      <input
+        type="radio"
+        name="btncheck"
+        class="btn-check mx-auto"
+        [id]="'btncheckedit'"
+        [checked]="userToAdd"
+        (click)="addAgency()"
+      />
+      <label
+        class="btn btn-primary mx-3 btn-lg py-3 my-auto"
+        [for]="'btncheckedit'"
+      >
+        Dodaj korisnika?
+      </label>
+    </div>
+  </span>
+</div>
+<app-profile [user]="userToEdit" [inputMode]="true"></app-profile>
+<app-workers
+  *ngIf="userToEdit && userToEdit.userType === 'agency'"
+  [user]="userToEdit"
+  [inputMode]="true"
+></app-workers>
+<app-register *ngIf="userToAdd && !userToEdit"></app-register>

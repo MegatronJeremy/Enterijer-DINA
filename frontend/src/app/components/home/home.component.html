@@ -43,11 +43,39 @@
         >
           Poslovi
         </button>
+
         <button
           type="button"
           class="btn btn-outline-secondary btn-lg px-4"
           [routerLink]="['/agency-jobs']"
           [hidden]="authService.getUserType() !== 'agency'"
+        >
+          Poslovi
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg px-4"
+          [routerLink]="['/admin']"
+          [hidden]="authService.getUserType() !== 'admin'"
+        >
+          Zahtevi
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg px-4"
+          [routerLink]="['/admin-users']"
+          [hidden]="authService.getUserType() !== 'admin'"
+        >
+          Korisnici
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-outline-secondary btn-lg px-4"
+          [routerLink]="['/admin-jobs']"
+          [hidden]="authService.getUserType() !== 'admin'"
         >
           Poslovi
         </button>

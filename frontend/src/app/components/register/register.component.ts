@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 import { ValidateService } from 'src/app/services/validate.service';
@@ -12,6 +12,8 @@ import User from 'src/app/models/user';
 })
 export class RegisterComponent implements OnInit {
   selectedFile?: File;
+
+  @Input() admin: boolean = false;
 
   username: string = '';
   password1: string = '';
@@ -127,6 +129,12 @@ export class RegisterComponent implements OnInit {
       }
     }
 
+    if (this.admin) {
+      user.registered = true;
+    } else {
+      user.registered = false;
+    }
+
     this.authService.registerUser(user).subscribe((data: any) => {
       if (data.success) {
         if (this.selectedFile) {
@@ -134,19 +142,27 @@ export class RegisterComponent implements OnInit {
             .changeProfilePicture(user.username, this.selectedFile!)
             .subscribe((data: any) => {
               if (data.success) {
-                this.toastr.success('Zahtev za registraciju je poslat');
-                this.router.navigate(['/login']);
+                if (!this.admin) {
+                  this.toastr.success('Zahtev za registraciju je poslat');
+                  this.router.navigate(['/login']);
+                } else {
+                  this.toastr.success('Korisnik je registrovan');
+                }
               } else {
                 this.toastr.error('Neuspešno slanje slike');
                 this.router.navigate(['/register']);
               }
             });
         } else {
-          this.toastr.success('Zahtev za registraciju je poslat');
-          this.router.navigate(['/login']);
+          if (!this.admin) {
+            this.toastr.success('Zahtev za registraciju je poslat');
+            this.router.navigate(['/login']);
+          } else {
+            this.toastr.success('Korisnik je registrovan');
+          }
         }
       } else {
-        this.toastr.error('Neuspešna registracija');
+        this.toastr.error(data.msg);
         this.router.navigate(['/register']);
       }
     });

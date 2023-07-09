@@ -27,6 +27,9 @@ import { JobComponent } from './components/job/job.component';
 import { SubmitJobComponent } from './components/submit-job/submit-job.component';
 import { WorkersComponent } from './components/workers/workers.component';
 import { AgencyJobsComponent } from './components/agency-jobs/agency-jobs.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AdminUsersComponent } from './components/admin-users/admin-users.component';
+import { AdminJobsComponent } from './components/admin-jobs/admin-jobs.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import { AgencyJobsComponent } from './components/agency-jobs/agency-jobs.compon
     SubmitJobComponent,
     WorkersComponent,
     AgencyJobsComponent,
+    FooterComponent,
+    AdminUsersComponent,
+    AdminJobsComponent,
   ],
   imports: [
     BrowserModule,

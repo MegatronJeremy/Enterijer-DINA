@@ -64,11 +64,11 @@
           <img
             *ngIf="user.profilePicture"
             [src]="'http://localhost:4000/' + user.profilePicture"
-            class="user-picture img-fluid img-thumbnail"
+            class="user-picture img-thumbnail"
           />
         </td>
         <td>{{ user.agencyInfo?.agencyName }}</td>
-        <td>{{ user.agencyInfo?.street }}</td>
+        <td>{{ User.agencyAddress(user) }}</td>
         <td>{{ user.agencyInfo?.description }}</td>
         <td>
           <span class="d-flex justify-content-center">

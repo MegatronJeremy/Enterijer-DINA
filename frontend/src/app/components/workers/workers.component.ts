@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import User from 'src/app/models/user';
 import Vacancies from 'src/app/models/vacancies';
@@ -14,7 +14,19 @@ import { WorkersService } from 'src/app/services/workers.service';
 })
 export class WorkersComponent implements OnInit {
   workers: Workers[] = [];
-  user?: User;
+
+  @Input() _user?: User;
+
+  @Input() set user(user: User | undefined) {
+    this._user = user;
+    this.initWorkers();
+  }
+
+  get user(): User | undefined {
+    return this._user;
+  }
+
+  @Input() inputMode: boolean = false;
   vacancy: Vacancies = new Vacancies();
   vacancyNum: number = 0;
   workerToEdit?: Workers;
@@ -28,12 +40,20 @@ export class WorkersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    if (this.inputMode) {
+      return;
+    }
+
     this.user = this.authService.getUser();
     if (!this.user) {
       this.toastr.error('Niste prijavljeni');
       return;
     }
 
+    this.initWorkers();
+  }
+
+  private initWorkers() {
     this.workersService.getAllWorkers(this.user!._id).subscribe((data: any) => {
       if (data.success) {
         this.workers = data.workers;
@@ -60,6 +80,35 @@ export class WorkersComponent implements OnInit {
                 }
               });
           }
+        } else {
+          this.toastr.error(data.msg);
+        }
+      });
+  }
+
+  acceptRequest() {
+    this.vacancy.vacancies += this.vacancy.vacanciesRequested;
+    this.vacancy.vacanciesRequested = 0;
+
+    this.workersService
+      .updateVacancyRequest(this.vacancy)
+      .subscribe((data: any) => {
+        if (data.success) {
+          this.toastr.success('Zahtev je prihvaćen');
+        } else {
+          this.toastr.error(data.msg);
+        }
+      });
+  }
+
+  denyRequest() {
+    this.vacancy.vacanciesRequested = 0;
+
+    this.workersService
+      .updateVacancyRequest(this.vacancy)
+      .subscribe((data: any) => {
+        if (data.success) {
+          this.toastr.success('Zahtev je odbijen');
         } else {
           this.toastr.error(data.msg);
         }
@@ -153,7 +202,16 @@ export class WorkersComponent implements OnInit {
   onClickDelete(worker: Workers) {
     this.workersService.deleteWorker(worker._id).subscribe((data: any) => {
       if (data.success) {
-        this.toastr.success(data.msg);
+        this.vacancy.vacancies++;
+        this.workersService
+          .updateVacancyRequest(this.vacancy)
+          .subscribe((data: any) => {
+            if (data.success) {
+              this.toastr.success(data.msg);
+            } else {
+              this.toastr.error(data.msg);
+            }
+          });
       } else {
         this.toastr.error(data.msg);
       }

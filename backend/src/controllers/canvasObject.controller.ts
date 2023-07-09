@@ -4,7 +4,8 @@ import CanvasObject from "../models/canvasObject";
 export class CanvasObjectController {
   updateCanvasObject = async (req: express.Request, res: express.Response) => {
     try {
-      const { type, address, area, roomNum, doors, rooms } = req.body;
+      const { type, address, area, roomNum, doors, rooms, activelyWorkedOn } =
+        req.body;
 
       const canvasObject = await CanvasObject.findById(req.body._id);
 
@@ -21,6 +22,7 @@ export class CanvasObjectController {
       canvasObject.doors = doors;
       canvasObject.roomNum = roomNum;
       canvasObject.rooms = rooms;
+      canvasObject.activelyWorkedOn = activelyWorkedOn;
 
       await canvasObject.save();
 

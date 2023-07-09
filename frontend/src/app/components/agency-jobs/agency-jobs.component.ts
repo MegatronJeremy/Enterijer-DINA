@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import CanvasObject from 'src/app/models/canvasObject';
+import { Room } from 'src/app/models/canvasObject';
 import Job from 'src/app/models/job';
 import Review from 'src/app/models/review';
 import User from 'src/app/models/user';
-import { AgencyReviewsService } from 'src/app/services/agency-reviews.service';
+import Workers from 'src/app/models/worker';
 import { AuthService } from 'src/app/services/auth.service';
 import { JobsService } from 'src/app/services/jobs.service';
+import { WorkersService } from 'src/app/services/workers.service';
+import { ObjectComponent } from '../object/object.component';
+import { CanvasObjectService } from 'src/app/services/canvas-object.service';
 
 @Component({
   selector: 'app-agency-jobs',
@@ -14,6 +18,8 @@ import { JobsService } from 'src/app/services/jobs.service';
   styleUrls: ['./agency-jobs.component.css'],
 })
 export class AgencyJobsComponent implements OnInit {
+  @ViewChild('canvas') canvasComponent?: ObjectComponent;
+
   jobs: Job[] = [];
   selectedJobs: Map<string, Job[]> = new Map<string, Job[]>();
 
@@ -30,11 +36,14 @@ export class AgencyJobsComponent implements OnInit {
   jobToReview?: Job;
   review: Review = new Review();
 
+  workers: Workers[] = [];
+
   constructor(
     private jobsService: JobsService,
     private toastr: ToastrService,
     private authService: AuthService,
-    private reviewService: AgencyReviewsService
+    private workersService: WorkersService,
+    private canvasObjectService: CanvasObjectService
   ) {}
 
   ngOnInit(): void {
@@ -55,12 +64,67 @@ export class AgencyJobsComponent implements OnInit {
           'active',
           this.jobs.filter((job: Job) => job.status === 'active')
         );
+        this.workersService
+          .getAllWorkers(this.user!._id)
+          .subscribe((data: any) => {
+            if (data.success) {
+              this.workers = data.workers.filter(
+                (worker: Workers) => worker.working === false
+              );
+              this.updateWorkerNum();
+            } else {
+              this.toastr.error(data.msg);
+            }
+          });
       } else {
         this.toastr.error(data.msg);
       }
     });
 
     this.deselectAll();
+  }
+
+  minWorkersCondition(obj?: CanvasObject): boolean {
+    if (!obj) {
+      return false;
+    }
+    return (
+      this.workers.length >=
+      obj.rooms.filter(
+        (room) => room.workers === undefined || room.workers.length === 0
+      ).length
+    );
+  }
+
+  assignWorker(worker: Workers) {
+    if (!this.canvasComponent?.selectedRoom) {
+      return;
+    }
+
+    let room: Room = this.canvasComponent?.selectedRoom;
+    if (!room.workers) {
+      room.workers = [];
+    }
+    room.workers.push(worker);
+    worker.working = true;
+    this.workers.splice(this.workers.indexOf(worker), 1);
+    this.updateWorkerNum();
+
+    this.canvasObjectService
+      .updateCanvasObject(this.selectedObj!)
+      .subscribe((data: any) => {
+        if (data.success) {
+          this.workersService.updateWorker(worker).subscribe((data: any) => {
+            if (data.success) {
+              this.toastr.success('Radnik uspešno dodeljen');
+            } else {
+              this.toastr.error(data.msg);
+            }
+          });
+        } else {
+          this.toastr.error(data.msg);
+        }
+      });
   }
 
   deselectAll(): void {
@@ -71,6 +135,36 @@ export class AgencyJobsComponent implements OnInit {
     this.jobToReview = undefined;
     this.review = new Review();
     this.cancellationReason = '';
+  }
+
+  updateWorkerNum(): void {
+    this.selectedJobs.get('active')!.map((job: Job) => {
+      if (job.object?.activelyWorkedOn) {
+        return;
+      }
+
+      if (!this.minWorkersCondition(job.object)) {
+        this.setRoomState(job, 'invalid');
+      } else {
+        this.setDefaultRoomState(job);
+      }
+    });
+  }
+
+  setRoomState(job: Job, state: string) {
+    for (let room of job.object!.rooms) {
+      room.roomState = state;
+    }
+  }
+
+  setDefaultRoomState(job: Job) {
+    for (let room of job.object!.rooms) {
+      if (!room.workers || room.workers.length === 0) {
+        room.roomState = 'not started';
+      } else {
+        room.roomState = 'working';
+      }
+    }
   }
 
   onClickSelect(object?: CanvasObject): void {
@@ -102,18 +196,24 @@ export class AgencyJobsComponent implements OnInit {
   }
 
   paidCondition(job: Job): boolean {
-    return job.payOffer !== undefined && job.status !== 'active';
+    return job.status !== 'active';
   }
 
-  getColor(job: Job): string {
-    switch (job.status) {
-      case 'pending':
-        return 'green';
-      case 'rejected':
-        return 'red';
-      default:
-        return 'black';
+  assignCondition(obj?: CanvasObject): boolean {
+    if (obj === undefined) {
+      return false;
     }
+    return (
+      !this.selectedObj?.activelyWorkedOn &&
+      this.selectedGroup === 'active' &&
+      obj.rooms.some(
+        (room) => room.workers === undefined || room.workers.length === 0
+      )
+    );
+  }
+
+  showAssignedCondition(): boolean {
+    return this.selectedGroup === 'active' && this.selectedObj !== undefined;
   }
 
   sendOffer(job: Job): void {
@@ -128,26 +228,62 @@ export class AgencyJobsComponent implements OnInit {
     });
   }
 
-  finishJob(job: Job): void {
-    this.jobsService.finishJob(job).subscribe((data: any) => {
-      if (data.success) {
-        this.toastr.success('Posao uspešno završen');
-        this.ngOnInit();
-      } else {
-        this.toastr.error(data.msg);
-      }
-    });
+  startCondition(): boolean {
+    return (
+      !this.selectedObj?.activelyWorkedOn &&
+      this.selectedObj !== undefined &&
+      this.selectedObj.rooms.every(
+        (room) => room.workers && room.workers.length > 0
+      )
+    );
   }
 
-  sendCancellation(job: Job): void {
-    job.cancellationReason = this.cancellationReason;
-    this.jobsService.updateJob(job).subscribe((data: any) => {
-      if (data.success) {
-        this.toastr.success('Zahtev za otkazivanje posla uspešno poslat');
-        this.ngOnInit();
-      } else {
-        this.toastr.error(data.msg);
-      }
+  startWork(): void {
+    this.selectedObj!.rooms.map((room) => {
+      room.roomState = 'working';
     });
+    this.selectedObj!.activelyWorkedOn = true;
+
+    this.canvasObjectService
+      .updateCanvasObject(this.selectedObj!)
+      .subscribe((data: any) => {
+        if (data.success) {
+          this.toastr.success('Posao na prostorijama započet');
+          this.canvasComponent?.drawObject();
+        } else {
+          this.toastr.error(data.msg);
+        }
+      });
+  }
+
+  workedOnCondition(): boolean {
+    return this.selectedObj?.activelyWorkedOn === true;
+  }
+
+  endWork(): void {
+    this.canvasComponent!.selectedRoom!.roomState = 'finished';
+    this.canvasComponent!.selectedRoom!.workers!.map((worker) => {
+      worker.working = false;
+      this.workersService.updateWorker(worker).subscribe((data: any) => {
+        if (!data.success) {
+          this.toastr.error(data.msg);
+        }
+      });
+    });
+    this.workers = this.workers.concat(
+      this.canvasComponent!.selectedRoom!.workers!
+    );
+    this.canvasComponent!.selectedRoom!.workers = [];
+    this.updateWorkerNum();
+
+    this.canvasObjectService
+      .updateCanvasObject(this.selectedObj!)
+      .subscribe((data: any) => {
+        if (data.success) {
+          this.toastr.success('Posao na prostoriji završen');
+        } else {
+          this.toastr.error(data.msg);
+        }
+      });
   }
 }

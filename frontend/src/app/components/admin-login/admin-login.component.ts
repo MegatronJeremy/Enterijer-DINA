@@ -37,4 +37,8 @@ export class AdminLoginComponent implements OnInit {
       }
     });
   }
+
+  onForgotPassword(): void {
+    this.router.navigate(['/forgot-password']);
+  }
 }

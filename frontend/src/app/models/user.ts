@@ -19,4 +19,12 @@ export default class User {
   };
   userType: string = '';
   registered: boolean = false;
+  deleted?: boolean;
+
+  static agencyAddress(user: User): string {
+    if (user.agencyInfo) {
+      return `${user.agencyInfo.country}, ${user.agencyInfo.city}, ${user.agencyInfo.street}`;
+    }
+    return '';
+  }
 }

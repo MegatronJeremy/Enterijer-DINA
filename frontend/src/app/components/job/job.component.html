@@ -183,7 +183,7 @@
             class="btn btn-success btn-lg me-auto my-auto"
             (click)="acceptJob(jobToPay)"
           >
-            Plati
+            Prihvati
           </button>
           <button
             class="btn btn-danger btn-lg ms-3 my-auto"
@@ -196,16 +196,20 @@
     </ul>
 
     <ul *ngIf="finishedJob" class="list-group my-3">
-      <li class="list-group-item d-flex">
-        <p class="my-auto mx-3 fw-bold">
-          Iznos plaćanja: {{ finishedJob.payOffer }} RSD
-        </p>
-        <button
-          class="btn btn-success btn-lg mx-auto my-auto"
-          (click)="finishJob(finishedJob)"
-        >
-          Plati
-        </button>
+      <li class="list-group-item d-flex flex-column">
+        <h2 class="fw-bold my-2">Iznos za plaćanje</h2>
+      </li>
+
+      <li class="list-group-item d-flex justify-content-between">
+        <span class="my-auto fs-4">{{ finishedJob.payOffer }} RSD</span>
+        <span class="d-flex justify-content-start">
+          <button
+            class="btn btn-success btn-lg me-auto my-auto"
+            (click)="finishJob(finishedJob)"
+          >
+            Plati
+          </button>
+        </span>
       </li>
     </ul>
 

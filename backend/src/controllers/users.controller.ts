@@ -32,10 +32,13 @@ export class UserController {
 
   deleteUser = async (req: express.Request, res: express.Response) => {
     try {
-      console.log(req.body);
       const { username } = req.body;
 
-      await User.deleteOne({ username: username });
+      let user = await User.findOne({ username: username });
+      user.deleted = true;
+      user.registered = false;
+
+      await user.save();
 
       res.json({ success: true, msg: "Korisnik obrisan" });
     } catch (err) {
@@ -65,6 +68,7 @@ export class UserController {
         clientInfo,
         agencyInfo,
         userType,
+        registered,
       } = req.body;
 
       if ((await User.findOne({ username: username })) !== null) {
@@ -80,9 +84,8 @@ export class UserController {
           clientInfo,
           agencyInfo,
           userType,
+          registered,
         });
-
-        newUser.registered = false;
 
         await User.addUser(newUser);
 
