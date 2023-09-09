@@ -1,5 +1,5 @@
 # Enterijer-DINA
-Angular 14 and MongoDB Web Application (MEAN Stack)
+Angular 14 and MongoDB Web Application (MEAN Stack), with responsive and fresh design!
 
 ## Running
 - In backend folder run -> npm install; npm run serve
