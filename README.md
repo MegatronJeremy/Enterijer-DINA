@@ -2,9 +2,10 @@
 Angular 14 and MongoDB Web Application (MEAN Stack), with responsive and fresh design!
 
 ## Running
-- In backend folder run -> npm install; npm run serve
-- In frontend folder run -> npm install; ng serve
-- Make sure MongoDB is running with the correct database - name of the database should be "enterijer", and all of the collections should be imported from the MongoDB folder. 
+- In the backend folder run the commands: npm install; npm run serve
+- In the frontend folder run the commands: npm install; ng serve
+- Make sure MongoDB is running with the correct database - name of the database should be "enterijer", and all of the collections should be imported from the MongoDB folder.
+- If everything went well, the application should be running on **http://localhost:4200/**
 
 ## Content
 
